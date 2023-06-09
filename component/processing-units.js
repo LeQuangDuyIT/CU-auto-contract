@@ -73,25 +73,27 @@ export function addProcessingUnit() {
 addProcessingUnit();
 
 export function renderProcessingUnits() {
-    const startIndex = getStartIndex();
     let newProcessingUnitList = processingUnitStorage().load();
+    if (newProcessingUnitList.length > 0) {
+        const startIndex = getStartIndex();
 
-    newProcessingUnitList = newProcessingUnitList.map(
-        (unit, index) =>
-            `<div class="m-bot" processing-unit="true">
-                <h3 class="tab">${startIndex + index}. ${unit.name}</h3>
-                <p class="tab">Địa chỉ: ${unit.addressVi}</p>
-                <p class="italic tab">
-                    Address: ${unit.addressEn}
-                </p>
-            </div>`
-    );
+        newProcessingUnitList = newProcessingUnitList.map(
+            (unit, index) =>
+                `<div class="m-bot" processing-unit="true">
+                    <h3 class="tab">${startIndex + index}. ${unit.name}</h3>
+                    <p class="tab">Địa chỉ: ${unit.addressVi}</p>
+                    <p class="italic tab">
+                        Address: ${unit.addressEn}
+                    </p>
+                </div>`
+        );
 
-    let docData = sourceDocStorage().load();
-    const index = docData.findIndex(string => string.includes('processing-unit="true"'));
-    docData = docData.filter(string => !string.includes('processing-unit="true"'));
-    docData.splice(index, 0, ...newProcessingUnitList);
-    sourceDocStorage().save(docData);
+        let docData = sourceDocStorage().load();
+        const index = docData.findIndex(string => string.includes('processing-unit="true"'));
+        docData = docData.filter(string => !string.includes('processing-unit="true"'));
+        docData.splice(index, 0, ...newProcessingUnitList);
+        sourceDocStorage().save(docData);
+    }
 }
 
 (function () {

@@ -1,7 +1,13 @@
-import { clientStorage, productionUnitStorage, processingUnitStorage } from '../component/local-storage.js';
+import {
+    clientStorage,
+    productionUnitStorage,
+    processingUnitStorage,
+    serviceStorage
+} from '../component/local-storage.js';
 import { renderDocument, renderClient } from '../main.js';
 import { renderProductionUnits } from '../component/production-units.js';
 import { renderProcessingUnits } from '../component/processing-units.js';
+import { renderServices } from '../component/service-and-fee.js';
 
 (function () {
     const initializationBtn = document.getElementById('initialization-btn');
@@ -10,6 +16,7 @@ import { renderProcessingUnits } from '../component/processing-units.js';
         clientStorage().save({});
         productionUnitStorage().save([]);
         processingUnitStorage().save([]);
+        serviceStorage().save([]);
         location.reload();
     });
 })();
@@ -23,6 +30,8 @@ import { renderProcessingUnits } from '../component/processing-units.js';
         if (processingUnits.length > 0) {
             renderProcessingUnits();
         }
+
+        renderServices();
 
         location.reload();
     });

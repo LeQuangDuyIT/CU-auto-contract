@@ -7,7 +7,7 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 body {
-    background: #E6E6E6;
+    background: #e6e6e6;
 }
 img {
     vertical-align: middle;
@@ -78,8 +78,8 @@ ul {
 
     overflow: hidden;
 }
-.page .page__core:focus{
-    outline: 1.5px solid #3EC7F4;
+.page .page__core:focus {
+    outline: 1.5px solid #3ec7f4;
 }
 .page .page__core .logo {
     width: 50%;
@@ -104,26 +104,32 @@ ul {
 
     width: 100%;
 }
-.page .fee thead tr:last-child{
+.page .services-and-fee thead tr:last-child {
     font-style: italic;
     height: 22.5px;
 }
-.page .fee tr:nth-last-child(1), .page .fee tr:nth-last-child(2), .page .fee tr:nth-last-child(3){
+.page .services-and-fee tr:nth-last-child(1),
+.page .services-and-fee tr:nth-last-child(2),
+.page .services-and-fee tr:nth-last-child(3) {
     height: 45px;
 }
-.page .fee tr th,
-.page .fee tr td {
+.page .services-and-fee tr th,
+.page .services-and-fee tr td {
     padding: 4px 6px;
     border: 1px solid black;
 }
-.page .fee tr th:last-child,
-.page .fee tr td:last-child {
+.page .services-and-fee tr th:last-child,
+.page .services-and-fee tr td:last-child {
     width: 25%;
 }
-.page .fee tr td:last-child{
+.page .services-and-fee tr th:first-child,
+.page .services-and-fee tr td:first-child {
+    width: 50px;
+}
+.page .services-and-fee tr td:last-child {
     text-align: right;
 }
-.page .fee tr td[colspan="2"]{
+.page .services-and-fee tr td[colspan='2'] {
     text-align: center;
 }
 .page .sign-box {
@@ -136,13 +142,13 @@ ul {
 
     text-align: center;
 }
-.page .bank{
+.page .bank {
     border: 1px solid black;
 }
-.page .bank tr td{
+.page .bank tr td {
     padding: 4px 6px;
 }
-.page .bank tr td:nth-child(2){
+.page .bank tr td:nth-child(2) {
     width: 16px;
 }
 .page .sign-box .sign-box__item {
@@ -180,3 +186,6 @@ ul {
     margin-bottom: 4mm;
 }
 /* End First Page */
+#service-table__bot tr:first-child td{
+    border-top: none;
+}

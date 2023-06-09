@@ -58,10 +58,26 @@ export function renderDocument() {
             currentPage.innerHTML += element;
         }
     });
-    // const client = clientStorage().load();
-    // if (!Object.values(client).includes('') && client) {
-    //     renderClient();
-    // }
 }
+
+function formatAfterRender() {
+    const serviceTableBot = document.getElementById('service-table__bot');
+    console.log('🚀 ~ file: main.js:65 ~ formatAfterRender ~ serviceTableBot:', serviceTableBot);
+
+    const thisPage = serviceTableBot.closest('.page');
+    console.log("🚀 ~ file: main.js:68 ~ formatAfterRender ~ thisPage:", thisPage)
+
+    const findServiceTableTop = thisPage.querySelector('#service-table__top');
+    console.log("🚀 ~ file: main.js:71 ~ formatAfterRender ~ findServiceTableTop:", findServiceTableTop)
+
+    if (!findServiceTableTop) {
+        const tds = Array.from(document.querySelectorAll('#service-table__bot tr:first-child td'));
+        tds.forEach(td => (td.style.borderTop = '1px solid black'));
+    }
+}
+
 renderDocument();
 renderClient();
+formatAfterRender();
+
+// window.addEventListener('load', formatAfterRender);

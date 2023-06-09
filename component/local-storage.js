@@ -45,3 +45,15 @@ export function processingUnitStorage() {
         }
     };
 }
+
+export function serviceStorage() {
+    return {
+        load() {
+            const stringData = localStorage.getItem('serviceAndFee');
+            return stringData ? JSON.parse(stringData) : [];
+        },
+        save(arr) {
+            localStorage.setItem('serviceAndFee', JSON.stringify(arr));
+        }
+    };
+}

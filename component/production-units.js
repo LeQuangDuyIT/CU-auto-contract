@@ -74,22 +74,24 @@ addProductionUnit();
 
 export function renderProductionUnits() {
     let newProductionUnitList = productionUnitStorage().load();
-    newProductionUnitList = newProductionUnitList.map(
-        (unit, index) =>
-            `<div class="m-bot" production-unit="true">
-                <h3 class="tab">${index + 1}. ${unit.name}</h3>
-                <p class="tab">Địa chỉ: ${unit.addressVi}</p>
-                <p class="italic tab">
-                    Address: ${unit.addressEn}
-                </p>
-            </div>`
-    );
+    if (newProductionUnitList.length > 0) {
+        newProductionUnitList = newProductionUnitList.map(
+            (unit, index) =>
+                `<div class="m-bot" production-unit="true">
+                    <h3 class="tab">${index + 1}. ${unit.name}</h3>
+                    <p class="tab">Địa chỉ: ${unit.addressVi}</p>
+                    <p class="italic tab">
+                        Address: ${unit.addressEn}
+                    </p>
+                </div>`
+        );
 
-    let docData = sourceDocStorage().load();
-    const index = docData.findIndex(string => string.includes('production-unit="true"'));
-    docData = docData.filter(string => !string.includes('production-unit="true"'));
-    docData.splice(index, 0, ...newProductionUnitList);
-    sourceDocStorage().save(docData);
+        let docData = sourceDocStorage().load();
+        const index = docData.findIndex(string => string.includes('production-unit="true"'));
+        docData = docData.filter(string => !string.includes('production-unit="true"'));
+        docData.splice(index, 0, ...newProductionUnitList);
+        sourceDocStorage().save(docData);
+    }
 }
 
 (function () {
