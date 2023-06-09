@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="/normalize.css" />
+        <link rel="stylesheet" href="/doc-style.css" />
+        <link rel="stylesheet" href="/web-style.css" />
+        <title>Auto Contract</title>
+    </head>
+    <body>
+        <div class="site">
+            <div class="setting-space">
+                <div class="setting-button">
+                    <button class="button" id="initialization-btn">
+                        <i class="fa-sharp fa-solid fa-gear fa-2xl"></i>
+                    </button>
+                    <button class="button" id="make-doc">Tạo Văn Bản</button>
+                    <button class="button">
+                        <a href="/print.html" target="_blank">
+                            <i class="fa-sharp fa-solid fa-print fa-2xl"></i>
+                        </a>
+                    </button>
+                </div>
+                <!-- Nhập thông tin khách hàng -->
+                <div id="input__client">
+                    <h3>KHÁCH HÀNG / <span class="italic">CLIENT</span></h3>
+                    <div class="form-body">
+                        <div class="form">
+                            <div class="setting-item">
+                                <label for="input-client__name">Tên công ty khách</label>
+                                <input id="input-client__name" type="text" />
+                            </div>
+                            <div class="setting-item">
+                                <label for="input-client__en-name">Tên công ty khách (Tiếng Anh)</label>
+                                <input id="input-client__en-name" type="text" />
+                            </div>
+                            <div class="setting-item">
+                                <label for="input-client__city">Tỉnh/Thành phố</label>
+                                <input id="input-client__city" type="text" />
+                            </div>
+                            <div class="setting-item">
+                                <label for="input-client__district">Huyện/Quận</label>
+                                <input id="input-client__district" type="text" />
+                            </div>
+                            <div class="setting-item">
+                                <label for="input-client__ward">Xã/Phường</label>
+                                <input id="input-client__ward" type="text" />
+                            </div>
+                            <div class="setting-item">
+                                <label for="input-client__address">Địa chỉ</label>
+                                <input id="input-client__address" type="text" />
+                            </div>
+                        </div>
+                        <div class="">
+                            <button id="submit" class="button">
+                                <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Nhập thông tin khách hàng -->
+                <!-- Nhập Đơn vị sản xuất -->
+                <div id="input__production-units">
+                    <div class="unit-form">
+                        <h3>ĐƠN VỊ SẢN XUẤT / <span class="italic">PRODUCTION UNITS</span></h3>
+                        <div class="form-body">
+                            <div class="form">
+                                <div class="setting-item">
+                                    <label for="input-production__name">Unit Name</label>
+                                    <input id="input-production__name" type="text" />
+                                </div>
+                                <div class="setting-item">
+                                    <label for="input-production__address--vi">Địa chỉ (VI)</label>
+                                    <input id="input-production__address--vi" type="text" />
+                                </div>
+                                <div class="setting-item">
+                                    <label for="input-production__address--en">Địa chỉ (EN)</label>
+                                    <input id="input-production__address--en" type="text" />
+                                </div>
+                            </div>
+                            <div class="">
+                                <button id="add-production-unit" class="button">
+                                    <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="units-added"></div>
+                </div>
+                <!-- End Nhập Đơn vị sản xuất -->
+                <!-- Nhập Đơn vị chế biến -->
+                <div id="input__processing-units">
+                    <div class="unit-form">
+                        <h3>ĐƠN VỊ CHẾ BIẾN / <span class="italic">PROCESSING UNITS</span></h3>
+                        <div class="form-body">
+                            <div class="form">
+                                <div class="setting-item">
+                                    <label for="input-processing__name">Unit Name</label>
+                                    <input id="input-processing__name" type="text" />
+                                </div>
+                                <div class="setting-item">
+                                    <label for="input-processing__address--vi">Địa chỉ (VI)</label>
+                                    <input id="input-processing__address--vi" type="text" />
+                                </div>
+                                <div class="setting-item">
+                                    <label for="input-processing__address--en">Địa chỉ (EN)</label>
+                                    <input id="input-processing__address--en" type="text" />
+                                </div>
+                            </div>
+                            <div class="">
+                                <button id="add-processing-unit" class="button">
+                                    <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="units-added"></div>
+                </div>
+                <!-- End Nhập Đơn vị chế biến -->
+            </div>
+            <div class="body-space">
+                <div id="contract">
+                    <div class="page center" id="first-page">
+                        <div class="page__core" contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/component/local-storage.js" type="module"></script>
+        <script src="/index/index.js" type="module"></script>
+        <script src="/main.js" type="module"></script>
+        <script src="/component/client.js" type="module"></script>
+        <script src="/component/production-units.js" type="module"></script>
+        <script src="/component/processing-units.js" type="module"></script>
+    </body>
+</html>

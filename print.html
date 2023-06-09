@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="/normalize.css" />
+        <link rel="stylesheet" href="/doc-style.css" />
+        <link rel="stylesheet" href="/web-style.css" />
+        <title>Auto Contract</title>
+        <style>
+            #contract {
+                margin: 0 auto;
+            }
+            .page {
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="site">
+            <div id="contract">
+                <div class="page center" id="first-page">
+                    <div class="page__core" contenteditable="true"></div>
+                </div>
+            </div>
+        </div>
+        <script src="/main.js" type="module"></script>
+        <!-- <script src="/component/client.js" type="module"></script> -->
+        <script>
+            window.onload = function () {
+                window.print();
+            };
+        </script>
+    </body>
+</html>

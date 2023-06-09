@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background: #E6E6E6;
+}
+img {
+    vertical-align: middle;
+}
+ul {
+    list-style-type: none;
+}
+.bold {
+    font-weight: bold;
+}
+.italic {
+    font-style: italic;
+}
+.underline {
+    text-decoration: underline;
+}
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+.justify {
+    text-align: justify;
+}
+.tab {
+    text-indent: 36px;
+}
+.caps {
+    text-transform: uppercase;
+}
+.m-top {
+    margin-top: 12px;
+}
+.m-bot {
+    margin-bottom: 12px;
+}
+.space {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: end;
+
+    min-width: 8px;
+
+    text-align: left;
+}
+
+/* Every Page */
+.page {
+    position: relative;
+
+    width: 210mm;
+    height: 297mm;
+    margin: 20px auto;
+    padding: 15mm 12mm 9mm 18mm;
+    border: 0.4px solid rgba(99, 99, 99, 0.4);
+    /* padding: 7.5mm 6mm 7.5mm 9mm; */
+
+    background: white;
+}
+.page .page__core {
+    width: 100%;
+    height: 100%;
+
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+
+    overflow: hidden;
+}
+.page .page__core:focus{
+    outline: 1.5px solid #3EC7F4;
+}
+.page .page__core .logo {
+    width: 50%;
+    height: auto;
+    min-height: 64.5px;
+
+    margin-bottom: 8mm;
+}
+.page .page-number {
+    position: absolute;
+    bottom: 15mm;
+    right: 15mm;
+}
+.page .row {
+    display: flex;
+}
+.page .row p:first-child {
+    flex-basis: 50%;
+}
+.page table {
+    border-collapse: collapse;
+
+    width: 100%;
+}
+.page .fee thead tr:last-child{
+    font-style: italic;
+    height: 22.5px;
+}
+.page .fee tr:nth-last-child(1), .page .fee tr:nth-last-child(2), .page .fee tr:nth-last-child(3){
+    height: 45px;
+}
+.page .fee tr th,
+.page .fee tr td {
+    padding: 4px 6px;
+    border: 1px solid black;
+}
+.page .fee tr th:last-child,
+.page .fee tr td:last-child {
+    width: 25%;
+}
+.page .fee tr td:last-child{
+    text-align: right;
+}
+.page .fee tr td[colspan="2"]{
+    text-align: center;
+}
+.page .sign-box {
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+    height: 50mm;
+    margin-top: 15mm;
+
+    text-align: center;
+}
+.page .bank{
+    border: 1px solid black;
+}
+.page .bank tr td{
+    padding: 4px 6px;
+}
+.page .bank tr td:nth-child(2){
+    width: 16px;
+}
+.page .sign-box .sign-box__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* End Every Page */
+
+/* First Page */
+#first-page {
+    font-size: 14px;
+}
+#first-page .page__core {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+}
+#first-page .page__core .company__wrap {
+    flex-basis: 50%;
+}
+#first-page .title {
+    font-size: 16px;
+}
+#first-page .extra-text {
+    margin: 12mm 0;
+}
+#first-page .extra-text:last-child {
+    /* margin-top: 24mm; */
+    margin-bottom: 0;
+}
+#first-page .company h2:last-of-type {
+    margin-bottom: 4mm;
+}
+/* End First Page */
