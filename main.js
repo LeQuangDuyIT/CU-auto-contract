@@ -62,13 +62,10 @@ export function renderDocument() {
 
 function formatAfterRender() {
     const serviceTableBot = document.getElementById('service-table__bot');
-    console.log('🚀 ~ file: main.js:65 ~ formatAfterRender ~ serviceTableBot:', serviceTableBot);
 
     const thisPage = serviceTableBot.closest('.page');
-    console.log("🚀 ~ file: main.js:68 ~ formatAfterRender ~ thisPage:", thisPage)
 
     const findServiceTableTop = thisPage.querySelector('#service-table__top');
-    console.log("🚀 ~ file: main.js:71 ~ formatAfterRender ~ findServiceTableTop:", findServiceTableTop)
 
     if (!findServiceTableTop) {
         const tds = Array.from(document.querySelectorAll('#service-table__bot tr:first-child td'));
@@ -78,6 +75,6 @@ function formatAfterRender() {
 
 renderDocument();
 renderClient();
-formatAfterRender();
+// formatAfterRender();
 
-// window.addEventListener('load', formatAfterRender);
+window.addEventListener('load', formatAfterRender);
