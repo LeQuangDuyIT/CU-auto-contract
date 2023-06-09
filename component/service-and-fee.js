@@ -39,7 +39,6 @@ function makeRemoveServiceBtn() {
 
 function addService() {
     let services = serviceStorage().load();
-    console.log("🚀 ~ file: service-and-fee.js:42 ~ addService ~ services:", services);
 
     services = services.map(
         (service, index) => `
