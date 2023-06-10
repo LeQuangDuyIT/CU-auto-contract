@@ -69,7 +69,7 @@ function getNewServiceTable(newServiceList) {
                 <tr>
                     <th>TT</th>
                     <th>Hạng mục</th>
-                    <th>Thành tiền</th>
+                    <th>Thành tiền (VNĐ)</th>
                 </tr>
                 <tr>
                     <th>No.</th>
