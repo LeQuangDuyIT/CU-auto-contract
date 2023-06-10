@@ -10,7 +10,7 @@ function serviceInput() {
             return {
                 serviceVi: serviceViInput.value,
                 serviceEn: serviceEnInput.value,
-                fee: feeInput.value
+                fee: +feeInput.value.replace(/[,.]/g, '')
             };
         },
         refreshValue() {
@@ -47,7 +47,7 @@ function addService() {
                 <h3>${index + 1}. ${service.serviceVi}</h3>
                 <h3>${service.serviceEn}</h3>
 
-                <h3>${service.fee}</h3>
+                <h3>${service.fee.toLocaleString('en-US')}</h3>
             </div>
             <div class="service__wrap--btn">
                 <button class="remove-service"><i class="fa-sharp fa-solid fa-xmark"></i></button>
@@ -95,7 +95,7 @@ export function renderServices() {
                         <p>${service.serviceVi}</p>
                         <p class="italic">${service.serviceEn}</p>
                     </td>
-                    <td>${service.fee}</td>
+                    <td>${service.fee.toLocaleString('en-US')}</td>
                 </tr>`
         );
         newServiceList = newServiceList.reduce((string, item) => string + item, '');
@@ -124,3 +124,22 @@ export function renderServices() {
         }
     });
 })();
+
+// Cài đặt ô input phí
+(function () {
+    const feeInput = document.getElementById('input-service__fee');
+    feeInput.addEventListener('input', () => {
+        // Loại bỏ các dấu phân tách hiện có
+        let feeValue = +feeInput.value.replace(/[,.]/g, '');
+
+        if (feeValue !== 0) {
+            // Định dạng lại giá trị với dấu phân tách hàng nghìn
+            feeValue = new Intl.NumberFormat().format(feeValue);
+
+            // Cập nhật giá trị trong ô input
+            feeInput.value = feeValue;
+        }
+    });
+})();
+
+

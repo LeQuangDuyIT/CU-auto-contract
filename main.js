@@ -1,4 +1,5 @@
-import { sourceDocStorage, clientStorage } from './component/local-storage.js';
+import { sourceDocStorage, clientStorage, serviceStorage } from './component/local-storage.js';
+import { numberToWordsVi, numberToWordsEn } from './component/number-to-words.js';
 
 function getClientElements() {
     return {
@@ -73,8 +74,52 @@ function formatAfterRender() {
     }
 }
 
+function getTotalFee() {
+    const serviceList = serviceStorage().load();
+    const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
+    const amout = totalFee * 1.1;
+    return {
+        totalFee: totalFee,
+        vAT: totalFee * 0.1,
+        amount: amout,
+        amountWordVi: numberToWordsVi(amout),
+        amountWordEn: numberToWordsEn(amout)
+    };
+}
+function renderTotalFee() {
+    const fee = getTotalFee();
+
+    function renderForEach(key, className) {
+        const elements = Array.from(document.querySelectorAll(`.${className}`));
+        elements.forEach(element => (element.textContent = fee[key].toLocaleString('en-US')));
+    }
+
+    renderForEach('totalFee', 'total-fee');
+    renderForEach('vAT', 'vat');
+    renderForEach('amount', 'amount');
+    renderForEach('amountWordVi', 'amount-word-vi');
+    renderForEach('amountWordEn', 'amount-word-en');
+
+    // const totalFeeElement = document.querySelector('.total-fee');
+    // totalFeeElement.textContent = fee.totalFee.toLocaleString('en-US');
+
+    // const vATElement = document.querySelector('.vat');
+    // vATElement.textContent = fee.vAT.toLocaleString('en-US');
+
+    // const amountElements = Array.from(document.querySelectorAll('.amount'));
+    // amountElements.forEach(element => (element.textContent = fee.amount.toLocaleString('en-US')));
+
+    // const amountWordViElements = Array.from(document.querySelectorAll('.amount-word-vi'));
+    // amountWordViElements.forEach(element => (element.textContent = fee.amountWordVi));
+
+    // const amountWordEnElements = Array.from(document.querySelectorAll('.amount-word-en'));
+    // amountWordEnElements.forEach(element => (element.textContent = fee.amountWordEn));
+}
+
 renderDocument();
 renderClient();
-// formatAfterRender();
 
-window.addEventListener('load', formatAfterRender);
+window.addEventListener('load', () => {
+    formatAfterRender();
+    renderTotalFee();
+});
