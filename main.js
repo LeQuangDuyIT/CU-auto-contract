@@ -99,21 +99,6 @@ function renderTotalFee() {
     renderForEach('amount', 'amount');
     renderForEach('amountWordVi', 'amount-word-vi');
     renderForEach('amountWordEn', 'amount-word-en');
-
-    // const totalFeeElement = document.querySelector('.total-fee');
-    // totalFeeElement.textContent = fee.totalFee.toLocaleString('en-US');
-
-    // const vATElement = document.querySelector('.vat');
-    // vATElement.textContent = fee.vAT.toLocaleString('en-US');
-
-    // const amountElements = Array.from(document.querySelectorAll('.amount'));
-    // amountElements.forEach(element => (element.textContent = fee.amount.toLocaleString('en-US')));
-
-    // const amountWordViElements = Array.from(document.querySelectorAll('.amount-word-vi'));
-    // amountWordViElements.forEach(element => (element.textContent = fee.amountWordVi));
-
-    // const amountWordEnElements = Array.from(document.querySelectorAll('.amount-word-en'));
-    // amountWordEnElements.forEach(element => (element.textContent = fee.amountWordEn));
 }
 
 renderDocument();
