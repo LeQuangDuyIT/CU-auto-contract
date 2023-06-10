@@ -106,5 +106,9 @@ renderClient();
 
 window.addEventListener('load', () => {
     formatAfterRender();
-    renderTotalFee();
+
+    const serviceList = serviceStorage().load();
+    if (serviceList.length > 0) {
+        renderTotalFee();
+    }
 });
