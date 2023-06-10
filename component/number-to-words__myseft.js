@@ -40,7 +40,7 @@ const numAndWordData = [
         word: 'chín'
     }
 ];
-const formatWord = [
+const formatWordData = [
     {
         rough: 'không mươi',
         format: 'linh'
@@ -66,13 +66,56 @@ const formatWord = [
         format: 'mươi'
     },
     {
+        rough: 'mười không',
+        format: 'mười'
+    },
+    {
         rough: 'mười mốt',
         format: 'mười một'
-    }
+    },
+    {
+        rough: 'một mươi mốt',
+        format: 'mười một'
+    },
+    // {
+    //     rough: ' không trăm',
+    //     format: ''
+    // },
+    // {
+    //     rough: 'nghìn không trăm',
+    //     format: 'nghìn'
+    // },
+    // {
+    //     rough: '  nghìn',
+    //     format: ''
+    // },
+    // {
+    //     rough: ' không trăm không trăm',
+    //     format: ''
+    // },
 ];
 
+function formatWord(numString) {
+    function haveError(string) {
+        for (let item of formatWordData) {
+            if (string.includes(item.rough)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    while (haveError(numString)) {
+        formatWordData.forEach(item => {
+            if (numString.includes(item.rough)) {
+                numString = numString.replace(item.rough, item.format);
+            }
+        });
+    }
+    return numString
+}
+
 // Đọc số có 3 chữ số
-function for3(num) {
+function toWordUnit(num) {
     let numString = '';
     let numArr = Array.from(num.toString());
     const donvi = numArr[numArr.length - 1];
@@ -89,22 +132,69 @@ function for3(num) {
         }
     }
 
-    function haveError(string) {
-        for (let item of formatWord) {
-            if (string.includes(item.rough)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    console.log(haveError(numString));
-    while (haveError(numString)) {
-        formatWord.forEach(item => {
-            if (numString.includes(item.rough)) {
-                numString = numString.replace(item.rough, item.format);
-            }
-        });
-    }
+    numString = formatWord(numString);
+    // function haveError(string) {
+    //     for (let item of formatWord) {
+    //         if (string.includes(item.rough)) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+    // console.log(haveError(numString));
+    // while (haveError(numString)) {
+    //     formatWord.forEach(item => {
+    //         if (numString.includes(item.rough)) {
+    //             numString = numString.replace(item.rough, item.format);
+    //         }
+    //     });
+    // }
 
     return numString;
 }
+
+console.log(toWordUnit(11));
+
+function subClassNumber(num) {
+    const numArr = Array.from(num.toString());
+    const classNumber = ['', 'nghìn', 'triệu', 'tỷ'];
+    let classArr = [];
+    let unit = [];
+    let k = 0;
+
+    for (let i = numArr.length - 1; i >= 0; i--) {
+        if (unit.length < 3) {
+            unit.unshift(numArr[i]);
+        }
+        if ((unit.length < 3 && i === 0) || unit.length === 3) {
+            const unitObj = {
+                class: classNumber[k],
+                value: unit.join('')
+            };
+            classArr.unshift(unitObj);
+            unit = [];
+            k++;
+        }
+    }
+    return classArr;
+}
+
+console.log(subClassNumber('46547987'));
+function toWord(num) {
+    let subClass = subClassNumber(num);
+    subClass.forEach(classNum => classNum.value = toWordUnit(classNum.value));
+    console.log("🚀 ~ file: number-to-words__myseft.js:140 ~ toWord ~ subClass:", subClass)
+
+    let resultToWord = subClass.reduce((string, item) => string + `${item.value} ${item.class} `, '');
+    resultToWord = formatWord(resultToWord);
+    console.log("🚀 ~ file: number-to-words__myseft.js:182 ~ toWord ~ resultToWord:", resultToWord)
+
+    console.log("🚀 ~ file: number-to-words__myseft.js:184 ~ toWord ~ resultToWord.endsWith(' không trăm'):", resultToWord.endsWith('không trăm '))
+    while (resultToWord.endsWith('không trăm')) {
+        resultToWord = resultToWord.replace('không trăm', '');
+    }
+    // if (resultToWord.endsWith('không trăm'))
+
+    return resultToWord;
+}
+console.log(toWord(120500000));
