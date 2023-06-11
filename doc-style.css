@@ -33,6 +33,9 @@ ul {
 .right {
     text-align: right;
 }
+.left{
+    text-align: left;
+}
 .justify {
     text-align: justify;
 }
