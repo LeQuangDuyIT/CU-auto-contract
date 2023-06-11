@@ -189,12 +189,6 @@ function toWord(num) {
     resultToWord = formatWord(resultToWord);
     console.log("🚀 ~ file: number-to-words__myseft.js:182 ~ toWord ~ resultToWord:", resultToWord)
 
-    console.log("🚀 ~ file: number-to-words__myseft.js:184 ~ toWord ~ resultToWord.endsWith(' không trăm'):", resultToWord.endsWith('không trăm '))
-    while (resultToWord.endsWith('không trăm')) {
-        resultToWord = resultToWord.replace('không trăm', '');
-    }
-    // if (resultToWord.endsWith('không trăm'))
-
     return resultToWord;
 }
-console.log(toWord(120500000));
+console.log(toWord(1250000));

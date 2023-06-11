@@ -1,14 +1,22 @@
-import { sourceDocStorage, clientStorage, serviceStorage } from './component/local-storage.js';
+import { sourceDocStorage, clientStorage, serviceStorage, productionUnitStorage } from './component/local-storage.js';
 import { numberToWordsVi, numberToWordsEn } from './component/number-to-words.js';
 
 function getClientElements() {
     return {
         name: Array.from(document.getElementsByClassName('client__name')),
         nameEn: Array.from(document.getElementsByClassName('client__en-name')),
-        city: Array.from(document.getElementsByClassName('client__city')),
-        district: Array.from(document.getElementsByClassName('client__district')),
-        ward: Array.from(document.getElementsByClassName('client__ward')),
-        address: Array.from(document.getElementsByClassName('client__address'))
+        addressFirst: Array.from(document.getElementsByClassName('client__address--first')),
+        addressLast: Array.from(document.getElementsByClassName('client__address--last')),
+        addressEnFirst: Array.from(document.getElementsByClassName('client__address-en--first')),
+        addressEnLast: Array.from(document.getElementsByClassName('client__address-en--last')),
+        taxCode: Array.from(document.getElementsByClassName('client__taxcode')),
+        phoneNumber: Array.from(document.getElementsByClassName('client__phonenumber')),
+        represent: Array.from(document.getElementsByClassName('client__represent')),
+        representEn: Array.from(document.getElementsByClassName('client__represent-en')),
+        representGender: Array.from(document.getElementsByClassName('client__represent--gender')),
+        representGenderEn: Array.from(document.getElementsByClassName('client__represent--gender-en')),
+        representPosition: Array.from(document.getElementsByClassName('client__represent--position')),
+        representPositionEn: Array.from(document.getElementsByClassName('client__represent--position-en'))
     };
 }
 
@@ -71,6 +79,12 @@ function formatAfterRender() {
     if (!findServiceTableTop) {
         const tds = Array.from(document.querySelectorAll('#service-table__bot tr:first-child td'));
         tds.forEach(td => (td.style.borderTop = '1px solid black'));
+    }
+
+    const productionUnitTitle = document.getElementById('production-unit__title');
+    const productionUnitList = productionUnitStorage().load();
+    if (productionUnitList.length === 0) {
+        productionUnitTitle.style.display = 'none';
     }
 }
 

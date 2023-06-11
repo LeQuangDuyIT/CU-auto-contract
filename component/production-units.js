@@ -78,9 +78,9 @@ export function renderProductionUnits() {
         newProductionUnitList = newProductionUnitList.map(
             (unit, index) =>
                 `<div class="m-bot" production-unit="true">
-                    <h3 class="tab">${index + 1}. ${unit.name}</h3>
-                    <p class="tab">Địa chỉ: ${unit.addressVi}</p>
-                    <p class="italic tab">
+                    <h3>${index + 1}. ${unit.name}</h3>
+                    <p>Địa chỉ: ${unit.addressVi}</p>
+                    <p class="italic">
                         Address: ${unit.addressEn}
                     </p>
                 </div>`

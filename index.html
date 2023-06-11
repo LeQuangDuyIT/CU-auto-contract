@@ -20,35 +20,140 @@
         <div class="site">
             <div class="setting-space__wrap">
                 <div class="setting-space">
-                    <!-- Nhập thông tin khách hàng -->
-                    <div id="input__client">
-                        <div class="client-form">
-                            <h3>KHÁCH HÀNG / <span class="italic">CLIENT</span></h3>
+                    <!-- Nhập tổng quan hợp đồng -->
+                    <div id="input__contract-overview" class="input__section">
+                        <div class="overview-form">
+                            <h2 class="m-bot">I. TỔNG QUAN / <span class="italic">OVERVIEW</span></h2>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
-                                        <label for="input-client__name">Tên công ty khách</label>
-                                        <input id="input-client__name" type="text" />
+                                        <label for="input-standard__name">Tiêu chuẩn chứng nhận</label>
+                                        <input id="input-standard__name" type="text" placeholder="Ex: Organic" />
+                                        <div class="more-info">
+                                            <div class="setting-item_child">
+                                                <label for="input-standard__date">Ngày hợp đồng</label>
+                                                <input type="date" id="input-standard__date" />
+                                            </div>
+                                            <div class="setting-item_child">
+                                                <label for="input-standard__vat">Thuế</label>
+                                                <select id="input-standard__vat">
+                                                    <option value="0.1">10%</option>
+                                                    <option value="0">Không</option>
+                                                </select>
+                                            </div>
+                                            <div class="setting-item_child">
+                                                <label for="input-standard__contractid">Mã hợp đồng</label>
+                                                <input
+                                                    type="text"
+                                                    id="input-standard__contractid"
+                                                    placeholder="Ex: 2023/06/486 – EU, NOP"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="submit1" class="button">
+                                        <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="client-added form-body">
+                            <div class="form">
+                                <h2>ORGANIC</h2>
+                            </div>
+                            <div>
+                                <button class="button">
+                                    <i class="fa-sharp fa-regular fa-pen-to-square fa-2xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Nhập tổng quan hợp đồng -->
+
+                    <!-- Nhập thông tin khách hàng -->
+                    <div id="input__client" class="input__section">
+                        <div class="client-form">
+                            <h2 class="m-bot">II. KHÁCH HÀNG / <span class="italic">CLIENT</span></h2>
+                            <div class="form-body">
+                                <div class="form">
+                                    <div class="setting-item">
+                                        <label for="input-client__name">Công ty</label>
+                                        <input
+                                            id="input-client__name"
+                                            type="text"
+                                            placeholder="Ex: Công ty TNHH Giải Pháp Gói Hàng Xanh GHX"
+                                        />
                                     </div>
                                     <div class="setting-item">
-                                        <label for="input-client__en-name">Tên công ty khách (Tiếng Anh)</label>
-                                        <input id="input-client__en-name" type="text" />
-                                    </div>
-                                    <div class="setting-item">
-                                        <label for="input-client__city">Tỉnh/Thành phố</label>
-                                        <input id="input-client__city" type="text" />
-                                    </div>
-                                    <div class="setting-item">
-                                        <label for="input-client__district">Huyện/Quận</label>
-                                        <input id="input-client__district" type="text" />
-                                    </div>
-                                    <div class="setting-item">
-                                        <label for="input-client__ward">Xã/Phường</label>
-                                        <input id="input-client__ward" type="text" />
+                                        <label for="input-client__en-name">Company</label>
+                                        <input
+                                            id="input-client__en-name"
+                                            type="text"
+                                            placeholder="Ex: GHX Green Packaging Solution Company Limited"
+                                        />
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-client__address">Địa chỉ</label>
-                                        <input id="input-client__address" type="text" />
+                                        <input
+                                            id="input-client__address"
+                                            type="text"
+                                            placeholder="Ex: Số - Đường, Phường, Quận, Thành phố, Việt Nam"
+                                        />
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-client__en-address">Address</label>
+                                        <input
+                                            id="input-client__en-address"
+                                            type="text"
+                                            placeholder="Ex: No. - Street, Ward, District, City, Vietnam"
+                                        />
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-client__taxcode">Mã số thuế</label>
+                                        <input id="input-client__taxcode" type="text" placeholder="Ex: 0317311068" />
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-client__phonenumber">Số điện thoại</label>
+                                        <input
+                                            id="input-client__phonenumber"
+                                            type="text"
+                                            placeholder="Ex: 0967833272"
+                                        />
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-client__represent">Đại diện</label>
+                                        <input
+                                            id="input-client__represent"
+                                            type="text"
+                                            placeholder="Ex: Lê Quang Duy"
+                                        />
+                                        <div class="more-info">
+                                            <div class="setting-item_child">
+                                                <label for="input-client__represent--gender">Mr./Mrs.</label>
+                                                <select id="input-client__represent--gender">
+                                                    <option value="Ông">Mr.</option>
+                                                    <option value="Bà">Mrs.</option>
+                                                </select>
+                                            </div>
+                                            <div class="setting-item_child">
+                                                <label for="input-client__represent--position">Chức vụ (VI)</label>
+                                                <input
+                                                    id="input-client__represent--position"
+                                                    type="text"
+                                                    placeholder="Ex: Giám đốc"
+                                                />
+                                            </div>
+                                            <div class="setting-item_child">
+                                                <label for="input-client__represent--en-position">Chức vụ (EN)</label>
+                                                <input
+                                                    id="input-client__represent--en-position"
+                                                    type="text"
+                                                    placeholder="Ex: Director"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
@@ -59,18 +164,25 @@
                             </div>
                         </div>
                         <div class="client-added form-body">
-                            <div class="form">
-                                <h2>Công ty TNHH xxx</h2>
-                                <h2 class="italic m-bot">sdgdfshfgh</h2>
-                                <h4>
+                            <!-- <div class="form">
+                                <h3>Công ty TNHH xxx</h3>
+                                <h3 class="italic m-bot">(sdgdfshfgh)</h3>
+                                <p class="m-bot">
+                                    <i class="fa-sharp fa-solid fa-hashtag"></i> 4894651461 (MST/<span class="italic">Tax code</span>)
+                                </p>
+                                <p class="un-bold">
+                                    <i class="fa-sharp fa-solid fa-location-dot"></i>
                                     182-184 Đường Bùi Tá Hán, Khu Phố 5, Phường An Phú,<br />
                                     TP. Thủ Đức, TP. Hồ Chí Minh, Việt Nam
-                                </h4>
-                                <h4 class="italic">
-                                    182-184 Bui Ta Han Street, Quarter 5, An Phu Ward, Thu Duc City, Ho Chi Minh City,
-                                    Viet Nam.
-                                </h4>
-                            </div>
+                                </p>
+                                <p class="italic un-bold m-bot">
+                                    (182-184 Bui Ta Han Street, Quarter 5, An Phu Ward, Thu Duc City, Ho Chi Minh City,
+                                    Viet Nam.)
+                                </p>
+                                <p class="m-bot"><i class="fa-sharp fa-solid fa-phone"></i> 4894651461</p>
+                                <p><i class="fa-sharp fa-solid fa-user"></i> Ông Trịnh Duy Châu - Giám đốc</p>
+                                <p class="italic">(Mr. Trinh Duy Chau - Giám đốc)</p>
+                            </div> -->
                             <div>
                                 <button class="button">
                                     <i class="fa-sharp fa-regular fa-pen-to-square fa-2xl"></i>
@@ -80,9 +192,10 @@
                     </div>
                     <!-- End Nhập thông tin khách hàng -->
                     <!-- Nhập Đơn vị sản xuất -->
-                    <div id="input__production-units">
+                    <div id="input__production-units" class="input__section">
                         <div class="unit-form">
-                            <h3>ĐƠN VỊ SẢN XUẤT / <span class="italic">PRODUCTION UNITS</span></h3>
+                            <h2 class="m-bot">III. ĐƠN VỊ ĐÁNH GIÁ / <span class="italic">UNITS</span></h2>
+                            <h3>1. ĐƠN VỊ SẢN XUẤT / <span class="italic">PRODUCTION UNITS</span></h3>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
@@ -109,9 +222,9 @@
                     </div>
                     <!-- End Nhập Đơn vị sản xuất -->
                     <!-- Nhập Đơn vị chế biến -->
-                    <div id="input__processing-units">
+                    <div id="input__processing-units" class="input__section">
                         <div class="unit-form">
-                            <h3>ĐƠN VỊ CHẾ BIẾN / <span class="italic">PROCESSING UNITS</span></h3>
+                            <h3>2. ĐƠN VỊ CHẾ BIẾN / <span class="italic">PROCESSING UNITS</span></h3>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
@@ -138,9 +251,9 @@
                     </div>
                     <!-- End Nhập Đơn vị chế biến -->
                     <!-- Nhập Dịch vụ và Phí -->
-                    <div id="input__service">
+                    <div id="input__service" class="input__section">
                         <div class="unit-form">
-                            <h3>DỊCH VỤ - PHÍ / <span class="italic">SERVICE - FEE</span></h3>
+                            <h3>IV. DỊCH VỤ - PHÍ / <span class="italic">SERVICE - FEE</span></h3>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">

@@ -21,9 +21,11 @@
 .setting-space {
     /* position: relative; */
     height: 100%;
-    padding: 20px;
+    /* padding: 20px; */
 
     overflow: auto;
+
+    line-height: 1.5;
 }
 .setting-button {
     display: flex;
@@ -39,6 +41,16 @@
     padding: 12px;
 
     background: green;
+}
+.input__section {
+    padding: 36px 24px;
+}
+.input__section:not(:last-child) {
+    /* margin-bottom: 24px; */
+    border-bottom: 1px solid black;
+}
+.input__section:hover {
+    background: yellow;
 }
 .unit__wrap {
     display: flex;
@@ -81,11 +93,28 @@
 
     margin-bottom: 12px;
 }
-.form-body .form .setting-item input {
+.form-body .form .setting-item input,
+.form-body .form .setting-item select,
+.form-body .form .setting-item .setting-item_child select {
     width: 100%;
+    height: 45px;
     padding: 8px;
+}
+.setting-item .more-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
 }
 
 #make-doc {
     width: 200px;
+}
+#input__client .client-added {
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+
+    background: white;
 }

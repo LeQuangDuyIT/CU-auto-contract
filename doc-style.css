@@ -18,6 +18,9 @@ ul {
 .bold {
     font-weight: bold;
 }
+.un-bold {
+    font-weight: normal;
+}
 .italic {
     font-style: italic;
 }
@@ -186,6 +189,6 @@ ul {
     margin-bottom: 4mm;
 }
 /* End First Page */
-#service-table__bot tr:first-child td{
+#service-table__bot tr:first-child td {
     border-top: none;
 }

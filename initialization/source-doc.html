@@ -27,19 +27,18 @@
             <div class="company__wrap">
                 <div class="company client">
                     <h2 class="client__name caps">CÔNG TY CỔ PHẦN CÔNG NGHỆ CHẾ BIẾN HẠT ĐIỀU VIỆT NAM <br /></h2>
-                    <h2 class="client__en-name italic caps">CPT CORP</h2>
-                    <h3>
-                        <span class="client__address">Đường Nguyễn Thái Học, Thôn Phước Tân</span>,
-                        <span class="client__ward">Xã Bình Tân</span>,<br />
-                        <span class="client__district">Huyện Phú Riềng</span>,
-                        <span class="client__city">Tỉnh Bình Phước</span>, Việt Nam
+                    <h2 class="client__en-name italic caps un-bold">CPT CORP</h2>
+                    <h3 class="un-bold">
+                        <span class="client__address--first">Đường Nguyễn Thái Học, Thôn Phước Tân, Xã Bình Tân,</span
+                        ><br />
+                        <span class="client__address--last">Huyện Phú Riềng, Tỉnh Bình Phước, Việt Nam</span>
                     </h3>
                 </div>
                 <p class="extra-text">Và / And</p>
                 <div class="company">
                     <h2>CÔNG TY TNHH CONTROL UNION VIỆT NAM</h2>
-                    <h2 class="italic">CONTROL UNION VIETNAM CO., LTD</h2>
-                    <h3>
+                    <h2 class="italic un-bold">CONTROL UNION VIETNAM CO., LTD</h2>
+                    <h3 class="un-bold">
                         182-184 Đường Bùi Tá Hán, Khu Phố 5, Phường An Phú,<br />
                         TP. Thủ Đức, TP. Hồ Chí Minh, Việt Nam
                     </h3>
@@ -59,27 +58,38 @@
             <h3 class="italic m-bot">Company Name: CPT CORP</h3>
             <div class="m-bot">
                 <p>
-                    Địa chỉ: Đường Nguyễn Thái Học, Thôn Phước Tân, Xã Bình Tân, Huyện Phú Riềng, Tỉnh Bình Phước, Việt
-                    Nam.
+                    Địa chỉ:
+                    <span class="client__address--first">Đường Nguyễn Thái Học, Thôn Phước Tân, Xã Bình Tân,</span
+                    ><span> </span>
+                    <span class="client__address--last">Huyện Phú Riềng, Tỉnh Bình Phước, Việt Nam</span>
                 </p>
                 <p class="italic">
-                    Address: Nguyen Thai Hoc Street, Phuoc Tan Village, Binh Tan Commune, Phu Rieng District, Binh Phuoc
-                    Province, Vietnam.
+                    Address:
+                    <span class="client__address-en--first"
+                        >Nguyen Thai Hoc Street, Phuoc Tan Village, Binh Tan Commune,</span
+                    ><span> </span>
+                    <span class="client__address-en--last">Phu Rieng District, Binh Phuoc Province, Vietnam</span>
                 </p>
             </div>
-            <p>Tel: 0389.938.370</p>
-            <p class="m-bot">MST/ <span> Tax Code</span>: 3801207322</p>
+            <p>Tel: <span class="client__phonenumber">0389.938.370</span></p>
+            <p class="m-bot">MST/ <span> Tax Code</span>: <span class="client__taxcode">3801207322</span></p>
             <div class="row">
-                <p>Đại diện: Ông Hoàng Kim Mạnh</p>
-                <p>Chức vụ: Giám đốc</p>
+                <p>
+                    Đại diện: <span class="client__represent--gender">Ông</span>
+                    <span class="client__represent">Hoàng Kim Mạnh</span>
+                </p>
+                <p>Chức vụ: <span class="client__represent--position">Giám đốc</span></p>
             </div>
             <div class="row italic m-bot">
-                <p>Represented by: Mr. Hoang Kim Manh</p>
-                <p>Title: Director</p>
+                <p>
+                    Represented by: <span class="client__represent--gender-en">Mr.</span>
+                    <span class="client__represent-en">Hoang Kim Manh</span>
+                </p>
+                <p>Title: <span class="client__represent--position-en">Director</span></p>
             </div>
             <h3>Bên B/<span class="italic">Party B</span></h3>
             <h3>Tên công ty: CÔNG TY TNHH CONTROL UNION VIỆT NAM</h3>
-            <h3 class="m-bot">Company Name: CONTROL UNION VIETNAM CO., LTD</h3>
+            <h3 class="italic m-bot">Company Name: CONTROL UNION VIETNAM CO., LTD</h3>
             <div class="m-bot">
                 <p>
                     Địa chỉ: 182-184 Đường Bùi Tá Hán, Khu Phố 5, Phường An Phú, TP. Thủ Đức, TP. Hồ Chí Minh, Việt Nam.
@@ -118,12 +128,14 @@
                     within one (01) year for the following units:
                 </p>
             </div>
-            <h3 class="underline m-bot">Đơn vị sản xuất/<span class="italic">Production Units</span>:</h3>
+            <h3 id="production-unit__title" class="underline m-bot">
+                Đơn vị sản xuất/<span class="italic">Production Units</span>:
+            </h3>
             <div class="wrap-element">
                 <div class="m-bot" production-unit="true">
-                    <h3 class="tab">1. BU GIA MAP FARM GROUP 01: OWN FARM</h3>
-                    <p class="tab">Địa chỉ: Xã Bù Gia Mập, Huyện Bù Gia Mập, Tỉnh Bình Phước, Việt Nam.</p>
-                    <p class="italic tab">
+                    <h3>1. BU GIA MAP FARM GROUP 01: OWN FARM</h3>
+                    <p>Địa chỉ: Xã Bù Gia Mập, Huyện Bù Gia Mập, Tỉnh Bình Phước, Việt Nam.</p>
+                    <p class="italic">
                         Address: Bu Gia Map Commune, Bu Gia Map District, Binh Phuoc Province, Vietnam.
                     </p>
                 </div>
@@ -131,12 +143,12 @@
             <h3 class="underline m-bot">Đơn vị chế biến/<span class="italic">Processing Units</span>:</h3>
             <div class="wrap-element">
                 <div class="m-bot" processing-unit="true">
-                    <h3 class="tab">2. CPT CORP: CERTIFICATE HOLDER</h3>
-                    <p class="tab">
+                    <h3>2. CPT CORP: CERTIFICATE HOLDER</h3>
+                    <p>
                         Địa chỉ: Đường Nguyễn Thái Học, Thôn Phước Tân, Xã Bình Tân, Huyện Phú Riềng, Tỉnh Bình Phước,
                         Việt Nam.
                     </p>
-                    <p class="italic tab">
+                    <p class="italic">
                         Address: Nguyen Thai Hoc Street, Phuoc Tan Village, Binh Tan Commune, Phu Rieng District, Binh
                         Phuoc Province, Vietnam.
                     </p>
@@ -433,7 +445,12 @@
                         <p class="bold">ĐẠI DIỆN BÊN A</p>
                         <p class="italic">ON BEHALF OF PARTY A</p>
                     </div>
-                    <h3>Ông/Mr. Hoàng Kim Mạnh</h3>
+                    <h3>
+                        <span class="client__represent--gender">Ông</span>/<span class="client__represent--gender-en"
+                            >Mr.</span
+                        >
+                        <span class="client__represent">Hoàng Kim Mạnh</span>
+                    </h3>
                 </div>
                 <div class="sign-box__item">
                     <div>
