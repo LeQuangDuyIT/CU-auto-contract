@@ -17,12 +17,12 @@ function splitAddress(string) {
     return [firstPart, lastPart];
 }
 
-const convertPosition = [
-    {
-        vi: 'Giám đốc',
-        en: 'Director'
-    }
-];
+// const convertPosition = [
+//     {
+//         vi: 'Giám đốc',
+//         en: 'Director'
+//     }
+// ];
 
 function getClientInput() {
     const addressSplit = splitAddress(document.getElementById('input-client__address').value);
@@ -85,7 +85,7 @@ function addClient(addedClinet) {
 
 
 (function () {
-    const btn = document.getElementById('submit');
+    const btn = document.getElementById('add-client');
     btn.addEventListener('click', () => {
         getClientInput();
         const addedClinet = clientStorage().load();

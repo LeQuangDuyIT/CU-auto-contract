@@ -49,9 +49,9 @@
     /* margin-bottom: 24px; */
     border-bottom: 1px solid black;
 }
-.input__section:hover {
+/* .input__section:hover {
     background: yellow;
-}
+} */
 .unit__wrap {
     display: flex;
     justify-content: space-between;

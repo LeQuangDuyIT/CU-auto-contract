@@ -1,4 +1,10 @@
-import { sourceDocStorage, clientStorage, serviceStorage, productionUnitStorage } from './component/local-storage.js';
+import {
+    sourceDocStorage,
+    clientStorage,
+    serviceStorage,
+    productionUnitStorage,
+    contractOverviewStorage
+} from './component/local-storage.js';
 import { numberToWordsVi, numberToWordsEn } from './component/number-to-words.js';
 
 function getClientElements() {
@@ -27,6 +33,26 @@ export function renderClient() {
 
         const keys = Object.keys(clientElement);
         keys.forEach(key => clientElement[key].forEach(element => (element.innerHTML = clientInfo[key])));
+    }
+}
+
+function getContractOverviewElements() {
+    return {
+        standard: Array.from(document.getElementsByClassName('contract-standard')),
+        date: Array.from(document.getElementsByClassName('contract-date')),
+        vat: Array.from(document.getElementsByClassName('contract-vat')),
+        contractId: Array.from(document.getElementsByClassName('contract-contractid')),
+        numAPR: Array.from(document.getElementsByClassName('contract-apr'))
+    };
+}
+
+export function renderContractOverview() {
+    const contractOverview = contractOverviewStorage().load();
+    if (Object.keys(contractOverview).length > 0) {
+        const contractOverviewElement = getContractOverviewElements();
+
+        const keys = Object.keys(contractOverviewElement);
+        keys.forEach(key => contractOverviewElement[key].forEach(element => (element.innerHTML = contractOverview[key])));
     }
 }
 
@@ -91,10 +117,11 @@ function formatAfterRender() {
 function getTotalFee() {
     const serviceList = serviceStorage().load();
     const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
-    const amout = totalFee * 1.1;
+    const vAT = contractOverviewStorage().load().vat / 100;
+    const amout = totalFee * (1 + vAT);
     return {
         totalFee: totalFee,
-        vAT: totalFee * 0.1,
+        vAT: totalFee * vAT,
         amount: amout,
         amountWordVi: numberToWordsVi(amout),
         amountWordEn: numberToWordsEn(amout)
@@ -116,6 +143,7 @@ function renderTotalFee() {
 }
 
 renderDocument();
+renderContractOverview();
 renderClient();
 
 window.addEventListener('load', () => {

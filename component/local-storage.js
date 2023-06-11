@@ -10,6 +10,18 @@ export function sourceDocStorage() {
     };
 }
 
+export function contractOverviewStorage() {
+    return {
+        load() {
+            const stringData = localStorage.getItem('contractOverview');
+            return stringData ? JSON.parse(stringData) : {};
+        },
+        save(obj) {
+            localStorage.setItem('contractOverview', JSON.stringify(obj));
+        }
+    };
+}
+
 export function clientStorage() {
     return {
         load() {

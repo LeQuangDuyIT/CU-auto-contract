@@ -80,7 +80,7 @@ export function renderProcessingUnits() {
         newProcessingUnitList = newProcessingUnitList.map(
             (unit, index) =>
                 `<div class="m-bot" processing-unit="true">
-                    <h3>${startIndex + index}. ${unit.name}</h3>
+                    <h3 class="caps">${startIndex + index}. ${unit.name}</h3>
                     <p>Địa chỉ: ${unit.addressVi}</p>
                     <p class="italic">
                         Address: ${unit.addressEn}

@@ -29,9 +29,11 @@
                                     <div class="setting-item">
                                         <label for="input-standard__name">Tiêu chuẩn chứng nhận</label>
                                         <input id="input-standard__name" type="text" placeholder="Ex: Organic" />
+                                    </div>
+                                    <div class="setting-item">
                                         <div class="more-info">
                                             <div class="setting-item_child">
-                                                <label for="input-standard__date">Ngày hợp đồng</label>
+                                                <label for="input-standard__date">Ngày tạo</label>
                                                 <input type="date" id="input-standard__date" />
                                             </div>
                                             <div class="setting-item_child">
@@ -42,18 +44,22 @@
                                                 </select>
                                             </div>
                                             <div class="setting-item_child">
-                                                <label for="input-standard__contractid">Mã hợp đồng</label>
-                                                <input
-                                                    type="text"
-                                                    id="input-standard__contractid"
-                                                    placeholder="Ex: 2023/06/486 – EU, NOP"
-                                                />
+                                                <label for="input-standard__apr">APR</label>
+                                                <input type="text" id="input-standard__apr" placeholder="Ex: 212760" />
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="setting-item">
+                                        <label for="input-standard__contractid">Mã hợp đồng</label>
+                                        <input
+                                            type="text"
+                                            id="input-standard__contractid"
+                                            placeholder="Ex: 2023/06/486 – EU, NOP"
+                                        />
+                                    </div>
                                 </div>
                                 <div>
-                                    <button id="submit1" class="button">
+                                    <button id="add-contract-overview" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
                                 </div>
@@ -157,7 +163,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button id="submit" class="button">
+                                    <button id="add-client" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
                                 </div>
@@ -195,20 +201,32 @@
                     <div id="input__production-units" class="input__section">
                         <div class="unit-form">
                             <h2 class="m-bot">III. ĐƠN VỊ ĐÁNH GIÁ / <span class="italic">UNITS</span></h2>
-                            <h3>1. ĐƠN VỊ SẢN XUẤT / <span class="italic">PRODUCTION UNITS</span></h3>
+                            <h3 class="m-bot">1. ĐƠN VỊ SẢN XUẤT / <span class="italic">PRODUCTION UNITS</span></h3>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
                                         <label for="input-production__name">Unit Name</label>
-                                        <input id="input-production__name" type="text" />
+                                        <input
+                                            id="input-production__name"
+                                            type="text"
+                                            placeholder="Bu Gia Map Farm Group 01: Own Farm"
+                                        />
                                     </div>
                                     <div class="setting-item">
-                                        <label for="input-production__address--vi">Địa chỉ (VI)</label>
-                                        <input id="input-production__address--vi" type="text" />
+                                        <label for="input-production__address--vi">Địa chỉ</label>
+                                        <input
+                                            id="input-production__address--vi"
+                                            type="text"
+                                            placeholder="Xã Bù Gia Mập, Huyện Bù Gia Mập, Tỉnh Bình Phước, Việt Nam"
+                                        />
                                     </div>
                                     <div class="setting-item">
-                                        <label for="input-production__address--en">Địa chỉ (EN)</label>
-                                        <input id="input-production__address--en" type="text" />
+                                        <label for="input-production__address--en">Address</label>
+                                        <input
+                                            id="input-production__address--en"
+                                            type="text"
+                                            placeholder="Bu Gia Map Commune, Bu Gia Map District, Binh Phuoc Province, Vietnam"
+                                        />
                                     </div>
                                 </div>
                                 <div>
@@ -224,20 +242,32 @@
                     <!-- Nhập Đơn vị chế biến -->
                     <div id="input__processing-units" class="input__section">
                         <div class="unit-form">
-                            <h3>2. ĐƠN VỊ CHẾ BIẾN / <span class="italic">PROCESSING UNITS</span></h3>
+                            <h3 class="m-bot">2. ĐƠN VỊ CHẾ BIẾN / <span class="italic">PROCESSING UNITS</span></h3>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
                                         <label for="input-processing__name">Unit Name</label>
-                                        <input id="input-processing__name" type="text" />
+                                        <input
+                                            id="input-processing__name"
+                                            type="text"
+                                            placeholder="CPT Corp - Certificate Holder"
+                                        />
                                     </div>
                                     <div class="setting-item">
-                                        <label for="input-processing__address--vi">Địa chỉ (VI)</label>
-                                        <input id="input-processing__address--vi" type="text" />
+                                        <label for="input-processing__address--vi">Địa chỉ</label>
+                                        <input
+                                            id="input-processing__address--vi"
+                                            type="text"
+                                            placeholder="Đường Nguyễn Thái Học, Thôn Phước Tân, Xã Bình Tân, Huyện Phú Riềng, Tỉnh Bình Phước, Việt Nam"
+                                        />
                                     </div>
                                     <div class="setting-item">
-                                        <label for="input-processing__address--en">Địa chỉ (EN)</label>
-                                        <input id="input-processing__address--en" type="text" />
+                                        <label for="input-processing__address--en">Address</label>
+                                        <input
+                                            id="input-processing__address--en"
+                                            type="text"
+                                            placeholder="Nguyen Thai Hoc Street, Phuoc Tan Village, Binh Tan Commune, Phu Rieng District, Binh Phuoc Province, Vietnam"
+                                        />
                                     </div>
                                 </div>
                                 <div>
@@ -253,7 +283,7 @@
                     <!-- Nhập Dịch vụ và Phí -->
                     <div id="input__service" class="input__section">
                         <div class="unit-form">
-                            <h3>IV. DỊCH VỤ - PHÍ / <span class="italic">SERVICE - FEE</span></h3>
+                            <h3 class="m-bot">IV. DỊCH VỤ - PHÍ / <span class="italic">SERVICE - FEE</span></h3>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
@@ -273,7 +303,7 @@
                                         />
                                     </div>
                                     <div class="setting-item">
-                                        <label for="input-service__fee">Phí</label>
+                                        <label for="input-service__fee">Phí/Fee</label>
                                         <input id="input-service__fee" type="text" placeholder="Ex: 100.000.000" />
                                     </div>
                                 </div>
@@ -312,6 +342,7 @@
         <script src="/component/number-to-words.js" type="module"></script>
         <script src="/index/index.js" type="module"></script>
         <script src="/main.js" type="module"></script>
+        <script src="/component/contract-overview.js" type="module"></script>
         <script src="/component/client.js" type="module"></script>
         <script src="/component/production-units.js" type="module"></script>
         <script src="/component/processing-units.js" type="module"></script>

@@ -54,7 +54,7 @@ function addProductionUnit() {
         (unit, index) => `
         <div class="unit__wrap" index="${index}">
             <div class="unit">
-                <h3>${index + 1}. ${unit.name}</h3>
+                <h3 class="caps">${index + 1}. ${unit.name}</h3>
                 <p>Địa chỉ: ${unit.addressVi}</p>
                 <p class="italic">Address: ${unit.addressEn}</p>
             </div>
