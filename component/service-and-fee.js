@@ -156,7 +156,7 @@ function getTotalFee() {
 
 function renderTotalFee() {
     const totalServiceFee = totalServiceFeeStorage().load();
-    if (Object.key(totalServiceFee).length > 0) {
+    if (Object.keys(totalServiceFee).length > 0) {
         // const { totalFee, amount } = totalServiceFee;
         const totalFeeNumber = document.getElementById('input-total-fee--number');
         const totalFeeNumberVAT = document.getElementById('input-total-fee--number-vat');
