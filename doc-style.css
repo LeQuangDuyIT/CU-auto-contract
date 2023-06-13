@@ -60,6 +60,10 @@ ul {
 
     text-align: left;
 }
+.caps-1st-letter::first-letter{
+    text-transform: uppercase;
+
+}
 
 /* Every Page */
 .page {

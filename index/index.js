@@ -3,11 +3,12 @@ import {
     productionUnitStorage,
     processingUnitStorage,
     serviceStorage,
-    contractOverviewStorage
+    contractOverviewStorage,
+    totalServiceFeeStorage
 } from '../component/local-storage.js';
 import { renderDocument, renderClient } from '../main.js';
 import { renderProductionUnits } from '../component/production-units.js';
-import { renderProcessingUnits } from '../component/processing-units.js'; 
+import { renderProcessingUnits } from '../component/processing-units.js';
 import { renderServices } from '../component/service-and-fee.js';
 
 (function () {
@@ -19,6 +20,7 @@ import { renderServices } from '../component/service-and-fee.js';
         productionUnitStorage().save([]);
         processingUnitStorage().save([]);
         serviceStorage().save([]);
+        totalServiceFeeStorage().save({});
         location.reload();
     });
 })();
