@@ -1,4 +1,4 @@
-const numAndWordData = [
+export const numAndWordData = [
     {
         num: 0,
         word: 'không'
@@ -122,6 +122,8 @@ function toWordUnit(num) {
     const chuc = numArr[numArr.length - 2];
     const tram = numArr[numArr.length - 3];
 
+    console.log(donvi, chuc, tram);
+
     if (tram) {
         numString = `${numAndWordData[tram].word} trăm ${numAndWordData[chuc].word} mươi ${numAndWordData[donvi].word}`;
     } else {
@@ -179,16 +181,17 @@ function subClassNumber(num) {
     return classArr;
 }
 
-console.log(subClassNumber('46547987'));
-function toWord(num) {
+export function toWordVi(num) {
     let subClass = subClassNumber(num);
+    // subClass.filter(classNum => classNum !== '000');
     subClass.forEach(classNum => classNum.value = toWordUnit(classNum.value));
-    console.log("🚀 ~ file: number-to-words__myseft.js:140 ~ toWord ~ subClass:", subClass)
 
     let resultToWord = subClass.reduce((string, item) => string + `${item.value} ${item.class} `, '');
     resultToWord = formatWord(resultToWord);
-    console.log("🚀 ~ file: number-to-words__myseft.js:182 ~ toWord ~ resultToWord:", resultToWord)
 
     return resultToWord;
 }
-console.log(toWord(1250000));
+
+
+
+

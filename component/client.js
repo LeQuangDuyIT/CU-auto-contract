@@ -54,7 +54,7 @@ function getClientInput() {
 }
 
 function addClient(addedClinet) {
-    const element = `<div class="form">
+    const elements = `<div class="form">
             <h3>${addedClinet.name}</h3>
             <h3 class="italic m-bot">(${addedClinet.nameEn})</h3>
             <p class="m-bot">
@@ -80,7 +80,7 @@ function addClient(addedClinet) {
         </div>`;
 
     const parent = document.querySelector('#input__client .client-added');
-    parent.innerHTML = element;
+    parent.innerHTML = elements;
 }
 
 

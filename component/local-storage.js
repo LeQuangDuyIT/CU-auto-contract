@@ -69,3 +69,15 @@ export function serviceStorage() {
         }
     };
 }
+
+export function totalServiceFeeStorage() {
+    return {
+        load() {
+            const stringData = localStorage.getItem('totalServiceFee');
+            return stringData ? JSON.parse(stringData) : {};
+        },
+        save(obj) {
+            localStorage.setItem('totalServiceFee', JSON.stringify(obj));
+        }
+    };
+}

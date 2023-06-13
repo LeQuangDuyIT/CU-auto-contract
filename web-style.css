@@ -52,10 +52,15 @@
 /* .input__section:hover {
     background: yellow;
 } */
-.unit__wrap {
+.unit__wrap, .service__wrap {
     display: flex;
     justify-content: space-between;
     gap: 25px;
+
+    padding: 8px;
+}
+.unit__wrap:last-child, .service__wrap:last-child{
+    margin-bottom: 0;
 }
 .body-space {
     flex-basis: 50%;
@@ -110,11 +115,21 @@
 #make-doc {
     width: 200px;
 }
-#input__client .client-added {
+#input__contract-overview .contract-overview-added,
+#input__client .client-added,
+#input__production-units .units-added,
+#input__processing-units .units-added,
+#input__service .services-added {
     padding: 12px;
     margin-top: 12px;
     margin-bottom: 24px;
     border-radius: 12px;
 
     background: white;
+}
+#input-total-fee--words-vi,
+#input-total-fee--words-en {
+    height: 90px;
+    padding: 8px;
+    line-height: 1.5;
 }

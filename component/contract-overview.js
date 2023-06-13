@@ -15,14 +15,42 @@ function getContractInput() {
     contractOverviewStorage().save(newContract);
 }
 
+function addContract(addedContract) {
+    let date = addedContract.date;
+    if (!date) {
+        date = '... / ... / ...';
+    }
+    const elements = `<div class="form">
+        <h4>HỢP ĐỒNG DỊCH VỤ THEO TIÊU CHUẨN <span class="caps">${addedContract.standard}</span></h4>
+        <h4 class="italic m-bot">CONTRACT FOR <span class="caps">${addedContract.standard}</span> STANDARD</h4>
+        <p>Ngày tạo: <span>${date}</span></p>
+        <p class="m-bot">Thuế: <span>${addedContract.vat}</span>%</p>
+        <p>APR: <span>${addedContract.numAPR}</span></p>
+        <p>Mã hợp đồng: <span>${addedContract.contractId}</span></p>
+    </div>`;
+
+    const parent = document.querySelector('#input__contract-overview .contract-overview-added');
+    parent.innerHTML = elements;
+}
+
 (function () {
     const btn = document.getElementById('add-contract-overview');
     btn.addEventListener('click', () => {
         getContractInput();
-        // const addedContract = contractOverviewStorage().load();
-        // // addClient(addedClinet);
+        const addedContract = contractOverviewStorage().load();
+        addContract(addedContract);
 
-        // const parent = document.querySelector('#input__client .client-added');
-        // parent.style.display = 'flex';
+        const parent = document.querySelector('#input__contract-overview .contract-overview-added');
+        parent.style.display = 'flex';
     });
 })();
+
+(function () {
+    const addedContract = contractOverviewStorage().load();
+    if (Object.keys(addedContract).length > 0) {
+        addContract(addedContract);
+    } else {
+        const parent = document.querySelector('#input__contract-overview .contract-overview-added');
+        parent.style.display = 'none';
+    }
+})()

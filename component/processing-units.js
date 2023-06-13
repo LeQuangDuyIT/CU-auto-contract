@@ -52,7 +52,7 @@ export function addProcessingUnit() {
     let units = processingUnitStorage().load();
     units = units.map(
         (unit, index) => `
-        <div class="unit__wrap" index="${index}">
+        <div class="unit__wrap m-bot" index="${index}">
             <div class="unit">
                 <h3>${startIndex + index}. ${unit.name}</h3>
                 <p>Địa chỉ: ${unit.addressVi}</p>
@@ -110,8 +110,21 @@ export function renderProcessingUnits() {
             addProcessingUnit();
             unitInput().refreshValue();
 
+            const parent = document.querySelector('#input__processing-units .units-added');
+            parent.style.display = 'block';
+
             // renderDocument();
             // location.reload();
         }
     });
 })();
+
+(function () {
+    const addedUnits = processingUnitStorage().load();
+    if (Object.keys(addedUnits).length > 0) {
+        addProcessingUnit(addedUnits);
+    } else {
+        const parent = document.querySelector('#input__processing-units .units-added');
+        parent.style.display = 'none';
+    }
+})()

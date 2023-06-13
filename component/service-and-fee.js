@@ -1,4 +1,23 @@
-import { sourceDocStorage, serviceStorage } from './local-storage.js';
+import { sourceDocStorage, contractOverviewStorage, serviceStorage, totalServiceFeeStorage } from './local-storage.js';
+import { numberToWordsEn } from './number-to-words-en.js';
+import { numAndWordData, toWordVi } from './number-to-words-vi.js';
+
+// Cài đặt ô input phí
+(function () {
+    const feeInput = document.getElementById('input-service__fee');
+    feeInput.addEventListener('input', () => {
+        // Loại bỏ các dấu phân tách hiện có
+        let feeValue = +feeInput.value.replace(/[,.]/g, '');
+
+        if (feeValue !== 0) {
+            // Định dạng lại giá trị với dấu phân tách hàng nghìn
+            feeValue = new Intl.NumberFormat().format(feeValue);
+
+            // Cập nhật giá trị trong ô input
+            feeInput.value = feeValue;
+        }
+    });
+})();
 
 function serviceInput() {
     const serviceViInput = document.getElementById('input-service__name--vi');
@@ -33,6 +52,9 @@ function makeRemoveServiceBtn() {
             serviceStorage().save(serviceList);
 
             addService();
+
+            getTotalFee();
+            renderTotalFee();
         })
     );
 }
@@ -110,6 +132,56 @@ export function renderServices() {
     }
 }
 
+function getTotalFee() {
+    const serviceList = serviceStorage().load();
+    const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
+    const vAT = () => {
+        const contractOverview = contractOverviewStorage().load();
+        if (contractOverview.vat) {
+            return +contractOverview.vat / 100;
+        } else return 0.1;
+    };
+    const amount = totalFee + totalFee * vAT();
+
+    const totalServiceFeeObj = {
+        totalFee: totalFee,
+        vAT: totalFee * vAT(),
+        amount: amount,
+        amountWordVi: toWordVi(amount),
+        amountWordEn: numberToWordsEn(amount)
+    };
+
+    totalServiceFeeStorage().save(totalServiceFeeObj);
+}
+
+function renderTotalFee() {
+    const totalServiceFee = totalServiceFeeStorage().load();
+    if (!Object.values(totalServiceFee).includes('')) {
+        // const { totalFee, amount } = totalServiceFee;
+        const totalFeeNumber = document.getElementById('input-total-fee--number');
+        const totalFeeNumberVAT = document.getElementById('input-total-fee--number-vat');
+        const totalFeeWordVn = document.getElementById('input-total-fee--words-vi');
+        const totalFeeWordEn = document.getElementById('input-total-fee--words-en');
+
+        totalFeeNumber.value = totalServiceFee.totalFee.toLocaleString('en-US');
+        totalFeeNumberVAT.value = totalServiceFee.amount.toLocaleString('en-US');
+        totalFeeWordVn.value = totalServiceFee.amountWordVi;
+        totalFeeWordEn.value = totalServiceFee.amountWordEn;
+    }
+}
+renderTotalFee();
+
+function editAndSaveTotalServiceFee() {
+    let totalServiceFee = totalServiceFeeStorage().load();
+
+    const totalFeeWordVn = document.getElementById('input-total-fee--words-vi').value;
+    const totalFeeWordEn = document.getElementById('input-total-fee--words-en').value;
+
+    totalServiceFee = { ...totalServiceFee, amountWordVi: totalFeeWordVn, amountWordEn: totalFeeWordEn };
+
+    totalServiceFeeStorage().save(totalServiceFee);
+}
+
 (function () {
     const addBtn = document.getElementById('add-service');
     addBtn.addEventListener('click', () => {
@@ -121,25 +193,29 @@ export function renderServices() {
 
             addService();
             serviceInput().refreshValue();
+
+            getTotalFee();
+            renderTotalFee();
+
+            const parent = document.querySelector('#input__service .services-added');
+            parent.style.display = 'block';
         }
     });
 })();
 
-// Cài đặt ô input phí
 (function () {
-    const feeInput = document.getElementById('input-service__fee');
-    feeInput.addEventListener('input', () => {
-        // Loại bỏ các dấu phân tách hiện có
-        let feeValue = +feeInput.value.replace(/[,.]/g, '');
-
-        if (feeValue !== 0) {
-            // Định dạng lại giá trị với dấu phân tách hàng nghìn
-            feeValue = new Intl.NumberFormat().format(feeValue);
-
-            // Cập nhật giá trị trong ô input
-            feeInput.value = feeValue;
-        }
+    const btn = document.getElementById('add-total-fee');
+    btn.addEventListener('click', () => {
+        editAndSaveTotalServiceFee();
     });
 })();
 
-
+(function () {
+    const addedServices = serviceStorage().load();
+    if (Object.keys(addedServices).length > 0) {
+        addService(addedServices);
+    } else {
+        const parent = document.querySelector('#input__service .services-added');
+        parent.style.display = 'none';
+    }
+})();

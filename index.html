@@ -65,16 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="client-added form-body">
-                            <div class="form">
-                                <h2>ORGANIC</h2>
-                            </div>
-                            <div>
-                                <button class="button">
-                                    <i class="fa-sharp fa-regular fa-pen-to-square fa-2xl"></i>
-                                </button>
-                            </div>
-                        </div>
+                        <div class="contract-overview-added form-body"></div>
                     </div>
                     <!-- End Nhập tổng quan hợp đồng -->
 
@@ -170,25 +161,6 @@
                             </div>
                         </div>
                         <div class="client-added form-body">
-                            <!-- <div class="form">
-                                <h3>Công ty TNHH xxx</h3>
-                                <h3 class="italic m-bot">(sdgdfshfgh)</h3>
-                                <p class="m-bot">
-                                    <i class="fa-sharp fa-solid fa-hashtag"></i> 4894651461 (MST/<span class="italic">Tax code</span>)
-                                </p>
-                                <p class="un-bold">
-                                    <i class="fa-sharp fa-solid fa-location-dot"></i>
-                                    182-184 Đường Bùi Tá Hán, Khu Phố 5, Phường An Phú,<br />
-                                    TP. Thủ Đức, TP. Hồ Chí Minh, Việt Nam
-                                </p>
-                                <p class="italic un-bold m-bot">
-                                    (182-184 Bui Ta Han Street, Quarter 5, An Phu Ward, Thu Duc City, Ho Chi Minh City,
-                                    Viet Nam.)
-                                </p>
-                                <p class="m-bot"><i class="fa-sharp fa-solid fa-phone"></i> 4894651461</p>
-                                <p><i class="fa-sharp fa-solid fa-user"></i> Ông Trịnh Duy Châu - Giám đốc</p>
-                                <p class="italic">(Mr. Trinh Duy Chau - Giám đốc)</p>
-                            </div> -->
                             <div>
                                 <button class="button">
                                     <i class="fa-sharp fa-regular fa-pen-to-square fa-2xl"></i>
@@ -317,6 +289,39 @@
                         <div class="services-added"></div>
                     </div>
                     <!-- End Nhập Dịch vụ và Phí -->
+                    <!-- Tổng tiền bằng số & chữ -->
+                    <div id="input__total-fee" class="input__section">
+                        <div class="unit-form">
+                            <h3 class="m-bot">V. TỔNG PHÍ / <span class="italic">TOTAL FEE</span></h3>
+                            <div class="form-body">
+                                <div class="form">
+                                    <div class="setting-item">
+                                        <label for="input-total-fee--number">Tổng phí</label>
+                                        <input id="input-total-fee--number" type="text" readonly />
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-total-fee--number-vat">Tổng phí (VAT)</label>
+                                        <input id="input-total-fee--number-vat" type="text" readonly />
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-total-fee--words-vi">Bằng chữ</label>
+                                        <textarea id="input-total-fee--words-vi" type="text" ></textarea>
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="input-total-fee--words-en">By Words</label>
+                                        <textarea id="input-total-fee--words-en" type="text" ></textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="add-total-fee" class="button">
+                                        <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="services-added"></div>
+                    </div>
+                    <!-- End Tổng tiền bằng số & chữ  -->
                 </div>
                 <div class="setting-button">
                     <button class="button" id="initialization-btn">
@@ -339,7 +344,8 @@
             </div>
         </div>
         <script src="/component/local-storage.js" type="module"></script>
-        <script src="/component/number-to-words.js" type="module"></script>
+        <script src="/component/number-to-words-vi.js" type="module"></script>
+        <script src="/component/number-to-words-en.js" type="module"></script>
         <script src="/index/index.js" type="module"></script>
         <script src="/main.js" type="module"></script>
         <script src="/component/contract-overview.js" type="module"></script>

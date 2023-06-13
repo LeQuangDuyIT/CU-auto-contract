@@ -3,9 +3,10 @@ import {
     clientStorage,
     serviceStorage,
     productionUnitStorage,
-    contractOverviewStorage
+    contractOverviewStorage,
+    totalServiceFeeStorage
 } from './component/local-storage.js';
-import { numberToWordsVi, numberToWordsEn } from './component/number-to-words.js';
+import { numberToWordsVi, numberToWordsEn } from './component/number-to-words2.js';
 
 function getClientElements() {
     return {
@@ -114,21 +115,21 @@ function formatAfterRender() {
     }
 }
 
-function getTotalFee() {
-    const serviceList = serviceStorage().load();
-    const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
-    const vAT = contractOverviewStorage().load().vat / 100;
-    const amout = totalFee * (1 + vAT);
-    return {
-        totalFee: totalFee,
-        vAT: totalFee * vAT,
-        amount: amout,
-        amountWordVi: numberToWordsVi(amout),
-        amountWordEn: numberToWordsEn(amout)
-    };
-}
+// function getTotalFee() {
+//     const serviceList = serviceStorage().load();
+//     const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
+//     const vAT = contractOverviewStorage().load().vat / 100;
+//     const amout = totalFee * (1 + vAT);
+//     return {
+//         totalFee: totalFee,
+//         vAT: totalFee * vAT,
+//         amount: amout,
+//         amountWordVi: amout,
+//         amountWordEn: amout
+//     };
+// }
 function renderTotalFee() {
-    const fee = getTotalFee();
+    const fee = totalServiceFeeStorage().load();
 
     function renderForEach(key, className) {
         const elements = Array.from(document.querySelectorAll(`.${className}`));

@@ -52,7 +52,7 @@ function addProductionUnit() {
     let units = productionUnitStorage().load();
     units = units.map(
         (unit, index) => `
-        <div class="unit__wrap" index="${index}">
+        <div class="unit__wrap m-bot" index="${index}">
             <div class="unit">
                 <h3 class="caps">${index + 1}. ${unit.name}</h3>
                 <p>Địa chỉ: ${unit.addressVi}</p>
@@ -114,8 +114,21 @@ export function renderProductionUnits() {
             addProcessingUnit();
             unitInput().refreshValue();
 
+            const parent = document.querySelector('#input__production-units .units-added');
+            parent.style.display = 'block';
+
             // renderDocument();
             // location.reload();
         }
     });
 })();
+
+(function () {
+    const addedUnits = productionUnitStorage().load();
+    if (Object.keys(addedUnits).length > 0) {
+        addProductionUnit(addedUnits);
+    } else {
+        const parent = document.querySelector('#input__production-units .units-added');
+        parent.style.display = 'none';
+    }
+})()
