@@ -4,7 +4,8 @@ import {
     serviceStorage,
     productionUnitStorage,
     contractOverviewStorage,
-    totalServiceFeeStorage
+    totalServiceFeeStorage,
+    processingUnitStorage
 } from './component/local-storage.js';
 import { numberToWordsVi, numberToWordsEn } from './component/number-to-words2.js';
 
@@ -102,7 +103,6 @@ function formatAfterRender() {
     const thisPage = serviceTableBot.closest('.page');
 
     const findServiceTableTop = thisPage.querySelector('#service-table__top');
-
     if (!findServiceTableTop) {
         const tds = Array.from(document.querySelectorAll('#service-table__bot tr:first-child td'));
         tds.forEach(td => (td.style.borderTop = '1px solid black'));
@@ -113,21 +113,14 @@ function formatAfterRender() {
     if (productionUnitList.length === 0) {
         productionUnitTitle.style.display = 'none';
     }
+
+    const processingUnitTitle = document.getElementById('processing-unit__title');
+    const processingUnitList = processingUnitStorage().load();
+    if (processingUnitList.length === 0) {
+        processingUnitTitle.style.display = 'none';
+    }
 }
 
-// function getTotalFee() {
-//     const serviceList = serviceStorage().load();
-//     const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
-//     const vAT = contractOverviewStorage().load().vat / 100;
-//     const amout = totalFee * (1 + vAT);
-//     return {
-//         totalFee: totalFee,
-//         vAT: totalFee * vAT,
-//         amount: amout,
-//         amountWordVi: amout,
-//         amountWordEn: amout
-//     };
-// }
 function renderTotalFee() {
     const fee = totalServiceFeeStorage().load();
 
