@@ -19,6 +19,19 @@
     <body>
         <div class="site">
             <div class="setting-space__wrap">
+                <ul class="menu">
+                    <li><a href="#input__contract-overview">Overview</a></li>
+                    <li><a href="#input__client">Client</a></li>
+                    <li>
+                        <a href="#input__production-units">Units</a>
+                        <ul class="sub-menu">
+                            <li><a href="#input__production-units">Production Units</a></li>
+                            <li><a href="#input__processing-units">Processing Units</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#input__service">Services</a></li>
+                    <li><a href="#input__total-fee">Total Fee</a></li>
+                </ul>
                 <div class="setting-space">
                     <!-- Nhập tổng quan hợp đồng -->
                     <div id="input__contract-overview" class="input__section">
@@ -28,7 +41,7 @@
                                 <div class="form">
                                     <div class="setting-item">
                                         <label for="input-standard__name">Tiêu chuẩn chứng nhận</label>
-                                        <input id="input-standard__name" type="text" placeholder="Ex: Organic" />
+                                        <input id="input-standard__name" type="text" placeholder="Ex: Organic"/>
                                     </div>
                                     <div class="setting-item">
                                         <div class="more-info">
@@ -58,7 +71,7 @@
                                         />
                                     </div>
                                 </div>
-                                <div>
+                                <div class="confirm-btn">
                                     <button id="add-contract-overview" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
@@ -153,7 +166,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="confirm-btn">
                                     <button id="add-client" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
@@ -201,7 +214,7 @@
                                         />
                                     </div>
                                 </div>
-                                <div>
+                                <div class="confirm-btn">
                                     <button id="add-production-unit" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
@@ -242,7 +255,7 @@
                                         />
                                     </div>
                                 </div>
-                                <div>
+                                <div class="confirm-btn">
                                     <button id="add-processing-unit" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
@@ -255,7 +268,7 @@
                     <!-- Nhập Dịch vụ và Phí -->
                     <div id="input__service" class="input__section">
                         <div class="unit-form">
-                            <h3 class="m-bot">IV. DỊCH VỤ - PHÍ / <span class="italic">SERVICE - FEE</span></h3>
+                            <h2 class="m-bot">IV. DỊCH VỤ - PHÍ / <span class="italic">SERVICE - FEE</span></h2>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
@@ -279,7 +292,7 @@
                                         <input id="input-service__fee" type="text" placeholder="Ex: 100.000.000" />
                                     </div>
                                 </div>
-                                <div>
+                                <div class="confirm-btn">
                                     <button id="add-service" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>
@@ -292,7 +305,7 @@
                     <!-- Tổng tiền bằng số & chữ -->
                     <div id="input__total-fee" class="input__section">
                         <div class="unit-form">
-                            <h3 class="m-bot">V. TỔNG PHÍ / <span class="italic">TOTAL FEE</span></h3>
+                            <h2 class="m-bot">V. TỔNG PHÍ / <span class="italic">TOTAL FEE</span></h2>
                             <div class="form-body">
                                 <div class="form">
                                     <div class="setting-item">
@@ -312,7 +325,7 @@
                                         <textarea id="input-total-fee--words-en" type="text"></textarea>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="confirm-btn">
                                     <button id="add-total-fee" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>

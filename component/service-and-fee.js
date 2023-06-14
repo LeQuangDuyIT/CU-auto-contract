@@ -132,15 +132,16 @@ export function renderServices() {
     }
 }
 
-function getTotalFee() {
+export function getTotalFee() {
     const serviceList = serviceStorage().load();
     const totalFee = serviceList.reduce((total, service) => total + service.fee, 0);
     const vAT = () => {
         const contractOverview = contractOverviewStorage().load();
-        if (contractOverview.vat) {
+        if (contractOverview.vat !== undefined) {
             return +contractOverview.vat / 100;
         } else return 0.1;
     };
+    console.log(vAT());
     const amount = totalFee + totalFee * vAT();
 
     const totalServiceFeeObj = {
@@ -154,7 +155,7 @@ function getTotalFee() {
     totalServiceFeeStorage().save(totalServiceFeeObj);
 }
 
-function renderTotalFee() {
+export function renderTotalFee() {
     const totalServiceFee = totalServiceFeeStorage().load();
     if (Object.keys(totalServiceFee).length > 0) {
         // const { totalFee, amount } = totalServiceFee;

@@ -2,8 +2,12 @@ import { contractOverviewStorage } from './local-storage.js';
 
 function getContractInput() {
     let dateValue = document.getElementById('input-standard__date').value;
-    const parts = dateValue.split('-');
-    dateValue = parts.reverse().join('/');
+    if (dateValue) {
+        const parts = dateValue.split('-');
+        dateValue = parts.reverse().join('/');
+    } else {
+        dateValue = '... / ... / ...';
+    }
 
     const newContract = {
         standard: document.getElementById('input-standard__name').value,
@@ -16,14 +20,10 @@ function getContractInput() {
 }
 
 function addContract(addedContract) {
-    let date = addedContract.date;
-    if (!date) {
-        date = '... / ... / ...';
-    }
     const elements = `<div class="form">
         <h4>HỢP ĐỒNG DỊCH VỤ THEO TIÊU CHUẨN <span class="caps">${addedContract.standard}</span></h4>
         <h4 class="italic m-bot">CONTRACT FOR <span class="caps">${addedContract.standard}</span> STANDARD</h4>
-        <p>Ngày tạo: <span>${date}</span></p>
+        <p>Ngày tạo: <span>${addedContract.date}</span></p>
         <p class="m-bot">Thuế: <span>${addedContract.vat}</span>%</p>
         <p>APR: <span>${addedContract.numAPR}</span></p>
         <p>Mã hợp đồng: <span>${addedContract.contractId}</span></p>
@@ -35,11 +35,11 @@ function addContract(addedContract) {
 
 export function confirmContractOverview() {
     getContractInput();
-        const addedContract = contractOverviewStorage().load();
-        addContract(addedContract);
+    const addedContract = contractOverviewStorage().load();
+    addContract(addedContract);
 
-        const parent = document.querySelector('#input__contract-overview .contract-overview-added');
-        parent.style.display = 'flex';
+    const parent = document.querySelector('#input__contract-overview .contract-overview-added');
+    parent.style.display = 'flex';
 }
 
 (function () {
@@ -57,4 +57,4 @@ export function confirmContractOverview() {
         const parent = document.querySelector('#input__contract-overview .contract-overview-added');
         parent.style.display = 'none';
     }
-})()
+})();

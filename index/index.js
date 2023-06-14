@@ -9,7 +9,7 @@ import {
 import { renderDocument, renderClient } from '../main.js';
 import { confirmProductionUnit, renderProductionUnits } from '../component/production-units.js';
 import { confirmProcessingUnit, renderProcessingUnits } from '../component/processing-units.js';
-import { confirmService, renderServices } from '../component/service-and-fee.js';
+import { confirmService, getTotalFee, renderServices, renderTotalFee } from '../component/service-and-fee.js';
 import { confirmContractOverview } from '../component/contract-overview.js';
 import { confirmClient } from '../component/client.js';
 
@@ -48,3 +48,15 @@ import { confirmClient } from '../component/client.js';
         location.reload();
     });
 })();
+
+(function () {
+    const inputVAT = document.getElementById('input-standard__vat');
+    inputVAT.addEventListener('change', () => {
+        let overview = contractOverviewStorage().load();
+        overview = { ...overview, vat: +document.getElementById('input-standard__vat').value * 100 };
+        contractOverviewStorage().save(overview);
+
+        getTotalFee();
+        renderTotalFee();
+    })
+})()
