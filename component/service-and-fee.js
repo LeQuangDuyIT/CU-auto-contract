@@ -180,6 +180,11 @@ function editAndSaveTotalServiceFee() {
     totalServiceFee = { ...totalServiceFee, amountWordVi: totalFeeWordVn, amountWordEn: totalFeeWordEn };
 
     totalServiceFeeStorage().save(totalServiceFee);
+
+    const parent = document.querySelector('#input__total-fee .total-fee-confirmed');
+    parent.style.display = 'block';
+
+    confirmTotalFee(totalServiceFeeStorage().load());
 }
 
 (function () {
@@ -218,4 +223,45 @@ function editAndSaveTotalServiceFee() {
         const parent = document.querySelector('#input__service .services-added');
         parent.style.display = 'none';
     }
+
+    const confirmedTotalFee = totalServiceFeeStorage().load();
+    if (Object.keys(confirmedTotalFee).length > 0) {
+        confirmTotalFee(confirmedTotalFee);
+    } else {
+        const parent = document.querySelector('#input__total-fee .total-fee-confirmed');
+        parent.style.display = 'none';
+    }
 })();
+
+
+function confirmTotalFee(confirmedTotalFee) {
+    const elements =
+        `<div class="form">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Tổng phí</td>
+                        <td>:</td>
+                        <td>${confirmedTotalFee.totalFee}</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng phí (VAT)</td>
+                        <td>:</td>
+                        <td>${confirmedTotalFee.amount}</td>
+                    </tr>
+                    <tr>
+                        <td>Bằng chữ</td>
+                        <td>:</td>
+                        <td>${confirmedTotalFee.amountWordVi}</td>
+                    </tr>
+                    <tr>
+                        <td>By word</td>
+                        <td>:</td>
+                        <td>${confirmedTotalFee.amountWordEn}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>`;
+    const parent = document.querySelector('#input__total-fee .total-fee-confirmed');
+    parent.innerHTML = elements;
+}

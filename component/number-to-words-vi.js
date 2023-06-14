@@ -76,23 +76,7 @@ const formatWordData = [
     {
         rough: 'một mươi mốt',
         format: 'mười một'
-    },
-    // {
-    //     rough: ' không trăm',
-    //     format: ''
-    // },
-    // {
-    //     rough: 'nghìn không trăm',
-    //     format: 'nghìn'
-    // },
-    // {
-    //     rough: '  nghìn',
-    //     format: ''
-    // },
-    // {
-    //     rough: ' không trăm không trăm',
-    //     format: ''
-    // },
+    }
 ];
 
 function formatWord(numString) {
@@ -135,22 +119,6 @@ function toWordUnit(num) {
     }
 
     numString = formatWord(numString);
-    // function haveError(string) {
-    //     for (let item of formatWord) {
-    //         if (string.includes(item.rough)) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-    // console.log(haveError(numString));
-    // while (haveError(numString)) {
-    //     formatWord.forEach(item => {
-    //         if (numString.includes(item.rough)) {
-    //             numString = numString.replace(item.rough, item.format);
-    //         }
-    //     });
-    // }
 
     return numString;
 }
@@ -183,7 +151,7 @@ function subClassNumber(num) {
 
 export function toWordVi(num) {
     let subClass = subClassNumber(num);
-    // subClass.filter(classNum => classNum !== '000');
+    subClass.filter(classNum => classNum !== '000');
     subClass.forEach(classNum => classNum.value = toWordUnit(classNum.value));
 
     let resultToWord = subClass.reduce((string, item) => string + `${item.value} ${item.class} `, '');

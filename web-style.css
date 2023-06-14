@@ -1,10 +1,11 @@
+
 .site {
     display: flex;
 
     width: 100%;
 }
 .setting-space__wrap {
-    flex-basis: 30%;
+    flex-basis: 40%;
 
     display: flex;
     flex-direction: column;
@@ -119,13 +120,19 @@
 #input__client .client-added,
 #input__production-units .units-added,
 #input__processing-units .units-added,
-#input__service .services-added {
+#input__service .services-added,
+#input__total-fee .total-fee-confirmed {
     padding: 12px;
     margin-top: 12px;
     margin-bottom: 24px;
     border-radius: 12px;
 
     background: white;
+}
+#input__total-fee .total-fee-confirmed table tr td:nth-child(2){
+    width: 24px;
+
+    text-align: center;
 }
 #input-total-fee--words-vi,
 #input-total-fee--words-en {
