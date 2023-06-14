@@ -1,4 +1,5 @@
-import { sourceDocStorage, productionUnitStorage, processingUnitStorage } from './local-storage.js';
+import { checkInput } from '../index/index.js';
+import { sourceDocStorage, productionUnitStorage, processingUnitStorage, clientStorage } from './local-storage.js';
 import { addProcessingUnit, renderProcessingUnits } from './processing-units.js';
 
 function unitInput() {
@@ -59,7 +60,8 @@ function addProductionUnit() {
                 <p class="italic">Address: ${unit.addressEn}</p>
             </div>
             <div class="unit__wrap--btn">
-                <button class="remove-production-unit"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+                <button class="edit-production-unit s-button"><i class="fa-sharp fa-solid fa-pen fa-xs"></i></button>
+                <button class="remove-production-unit s-button"><i class="fa-sharp fa-solid fa-xmark"></i></button>
             </div>
         </div>`
     );
@@ -69,6 +71,7 @@ function addProductionUnit() {
     parent.innerHTML = units;
 
     makeRemoveUnitBtn();
+    makeEditUnitBtn()
 }
 addProductionUnit();
 
@@ -95,8 +98,8 @@ export function renderProductionUnits() {
 }
 
 export function confirmProductionUnit() {
-    const newUnit = unitInput().getValue();
-    if (!Object.values(newUnit).includes('')) {
+    if (checkInput('input__production-units')) {
+        const newUnit = unitInput().getValue();
         let productionUnitList = productionUnitStorage().load();
         productionUnitList.push(newUnit);
         productionUnitStorage().save(productionUnitList);
@@ -107,7 +110,9 @@ export function confirmProductionUnit() {
 
         const parent = document.querySelector('#input__production-units .units-added');
         parent.style.display = 'block';
-    }
+
+        return true;
+    } else return false;
 }
 
 (function () {
@@ -126,3 +131,42 @@ export function confirmProductionUnit() {
         parent.style.display = 'none';
     }
 })();
+
+function makeEditUnitBtn() {
+    const editBtns = Array.from(document.getElementsByClassName('edit-production-unit'));
+    editBtns.forEach(editBtn => {
+        editBtn.addEventListener('click', () => {
+            const thisIndex = +editBtn.closest('.unit__wrap').getAttribute('index');
+            const indexInputElement = document.getElementById('input-production__index-edit');
+            indexInputElement.parentNode.classList.remove('hide');
+            indexInputElement.value = thisIndex + 1;
+
+            let productionUnitList = productionUnitStorage().load();
+            const inputElements = {
+                name: document.getElementById('input-production__name'),
+                addressVi: document.getElementById('input-production__address--vi'),
+                addressEn: document.getElementById('input-production__address--en')
+            }
+            inputElements.name.value = productionUnitList[thisIndex].name;
+            inputElements.addressVi.value = productionUnitList[thisIndex].addressVi;
+            inputElements.addressEn.value = productionUnitList[thisIndex].addressEn;
+
+            const confirmBtn = document.getElementById('add-production-unit');
+            confirmBtn.removeEventListener('click', confirmProductionUnit);
+            confirmBtn.addEventListener('click', () => {
+                console.log(inputElements);
+                const newUnit = {
+                    name: inputElements.name.value,
+                    addressVi: inputElements.addressVi.value,
+                    addressEn: inputElements.addressEn.value
+                };
+                console.log(newUnit);
+                productionUnitList.splice(thisIndex, 1, newUnit)
+                productionUnitStorage().save(productionUnitList);
+
+                addProductionUnit();
+                indexInputElement.parentNode.classList.add('hide');
+            })
+        })
+    })
+}

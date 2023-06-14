@@ -41,7 +41,7 @@
                                 <div class="form">
                                     <div class="setting-item">
                                         <label for="input-standard__name">Tiêu chuẩn chứng nhận</label>
-                                        <input id="input-standard__name" type="text" placeholder="Ex: Organic"/>
+                                        <input id="input-standard__name" type="text" placeholder="Ex: Organic" required/>
                                     </div>
                                     <div class="setting-item">
                                         <div class="more-info">
@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="setting-item_child">
                                                 <label for="input-standard__apr">APR</label>
-                                                <input type="text" id="input-standard__apr" placeholder="Ex: 212760" />
+                                                <input type="text" id="input-standard__apr" placeholder="Ex: 212760" required/>
                                             </div>
                                         </div>
                                     </div>
@@ -68,6 +68,7 @@
                                             type="text"
                                             id="input-standard__contractid"
                                             placeholder="Ex: 2023/06/486 – EU, NOP"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -94,6 +95,7 @@
                                             id="input-client__name"
                                             type="text"
                                             placeholder="Ex: Công ty TNHH Giải Pháp Gói Hàng Xanh GHX"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -102,6 +104,7 @@
                                             id="input-client__en-name"
                                             type="text"
                                             placeholder="Ex: GHX Green Packaging Solution Company Limited"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -110,6 +113,7 @@
                                             id="input-client__address"
                                             type="text"
                                             placeholder="Ex: Số - Đường, Phường, Quận, Thành phố, Việt Nam"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -118,11 +122,12 @@
                                             id="input-client__en-address"
                                             type="text"
                                             placeholder="Ex: No. - Street, Ward, District, City, Vietnam"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-client__taxcode">Mã số thuế</label>
-                                        <input id="input-client__taxcode" type="text" placeholder="Ex: 0317311068" />
+                                        <input id="input-client__taxcode" type="text" placeholder="Ex: 0317311068" required />
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-client__phonenumber">Số điện thoại</label>
@@ -138,6 +143,7 @@
                                             id="input-client__represent"
                                             type="text"
                                             placeholder="Ex: Lê Quang Duy"
+                                            required
                                         />
                                         <div class="more-info">
                                             <div class="setting-item_child">
@@ -153,6 +159,7 @@
                                                     id="input-client__represent--position"
                                                     type="text"
                                                     placeholder="Ex: Giám đốc"
+                                                    required
                                                 />
                                             </div>
                                             <div class="setting-item_child">
@@ -161,6 +168,7 @@
                                                     id="input-client__represent--en-position"
                                                     type="text"
                                                     placeholder="Ex: Director"
+                                                    required
                                                 />
                                             </div>
                                         </div>
@@ -189,12 +197,21 @@
                             <h3 class="m-bot">1. ĐƠN VỊ SẢN XUẤT / <span class="italic">PRODUCTION UNITS</span></h3>
                             <div class="form-body">
                                 <div class="form">
+                                    <div class="setting-item hide">
+                                        <label for="input-production__index-edit">Change For</label>
+                                        <input
+                                            id="input-production__index-edit"
+                                            type="text"
+                                            readonly
+                                        />
+                                    </div>
                                     <div class="setting-item">
                                         <label for="input-production__name">Unit Name</label>
                                         <input
                                             id="input-production__name"
                                             type="text"
                                             placeholder="Ex: Bu Gia Map Farm Group 01: Own Farm"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -203,6 +220,7 @@
                                             id="input-production__address--vi"
                                             type="text"
                                             placeholder="Ex: Xã Bù Gia Mập, Huyện Bù Gia Mập, Tỉnh Bình Phước, Việt Nam"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -211,6 +229,7 @@
                                             id="input-production__address--en"
                                             type="text"
                                             placeholder="Ex: Bu Gia Map Commune, Bu Gia Map District, Binh Phuoc Province, Vietnam"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -236,6 +255,7 @@
                                             id="input-processing__name"
                                             type="text"
                                             placeholder="Ex: CPT Corp - Certificate Holder"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -244,6 +264,7 @@
                                             id="input-processing__address--vi"
                                             type="text"
                                             placeholder="Ex: Đường Nguyễn Thái Học, Thôn Phước Tân, Xã Bình Tân, Huyện Phú Riềng, Tỉnh Bình Phước, Việt Nam"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -252,6 +273,7 @@
                                             id="input-processing__address--en"
                                             type="text"
                                             placeholder="Ex: Nguyen Thai Hoc Street, Phuoc Tan Village, Binh Tan Commune, Phu Rieng District, Binh Phuoc Province, Vietnam"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -277,6 +299,7 @@
                                             id="input-service__name--vi"
                                             type="text"
                                             placeholder="Ex: Đánh giá chứng nhận theo tiêu chuẩn organic EU, NOP"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
@@ -285,11 +308,13 @@
                                             id="input-service__name--en"
                                             type="text"
                                             placeholder="Ex: Inspection - certification under organic EU,NOP standard"
+                                            required
                                         />
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-service__fee">Phí/Fee</label>
-                                        <input id="input-service__fee" type="text" placeholder="Ex: 100.000.000" />
+                                        <input id="input-service__fee" type="text" placeholder="Ex: 100.000.000" required/>
+
                                     </div>
                                 </div>
                                 <div class="confirm-btn">
@@ -310,22 +335,25 @@
                                 <div class="form">
                                     <div class="setting-item">
                                         <label for="input-total-fee--number">Tổng phí</label>
-                                        <input id="input-total-fee--number" type="text" readonly />
+                                        <input id="input-total-fee--number" type="text" readonly required/>
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-total-fee--number-vat">Tổng phí (VAT)</label>
-                                        <input id="input-total-fee--number-vat" type="text" readonly />
+                                        <input id="input-total-fee--number-vat" type="text" readonly required/>
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-total-fee--words-vi">Bằng chữ</label>
-                                        <textarea id="input-total-fee--words-vi" type="text"></textarea>
+                                        <textarea id="input-total-fee--words-vi" type="text" required></textarea>
                                     </div>
                                     <div class="setting-item">
                                         <label for="input-total-fee--words-en">By Words</label>
-                                        <textarea id="input-total-fee--words-en" type="text"></textarea>
+                                        <textarea id="input-total-fee--words-en" type="text" required></textarea>
                                     </div>
                                 </div>
                                 <div class="confirm-btn">
+                                    <button id="reload-total-fee" class="button">
+                                        <i class="fa-solid fa-rotate fa-2xl"></i>
+                                    </button>
                                     <button id="add-total-fee" class="button">
                                         <i class="fa-sharp fa-solid fa-check fa-2xl"></i>
                                     </button>

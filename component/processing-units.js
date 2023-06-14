@@ -1,5 +1,6 @@
 import { renderDocument } from '/main.js';
 import { sourceDocStorage, productionUnitStorage, processingUnitStorage } from './local-storage.js';
+import { checkInput } from '../index/index.js';
 
 function unitInput() {
     const nameInput = document.getElementById('input-processing__name');
@@ -97,12 +98,11 @@ export function renderProcessingUnits() {
 }
 
 export function confirmProcessingUnit() {
-    const newUnit = unitInput().getValue();
-    if (!Object.values(newUnit).includes('')) {
+    if (checkInput('input__processing-units')) {
+        const newUnit = unitInput().getValue();
         let processingUnitList = processingUnitStorage().load();
         processingUnitList.push(newUnit);
         processingUnitStorage().save(processingUnitList);
-
 
         addProcessingUnit();
         unitInput().refreshValue();
@@ -110,7 +110,8 @@ export function confirmProcessingUnit() {
         const parent = document.querySelector('#input__processing-units .units-added');
         parent.style.display = 'block';
 
-    }
+        return true;
+    } else return false;
 }
 
 (function () {
@@ -128,4 +129,4 @@ export function confirmProcessingUnit() {
         const parent = document.querySelector('#input__processing-units .units-added');
         parent.style.display = 'none';
     }
-})()
+})();

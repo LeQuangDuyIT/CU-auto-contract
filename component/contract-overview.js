@@ -1,3 +1,4 @@
+import { checkInput } from '../index/index.js';
 import { contractOverviewStorage } from './local-storage.js';
 
 function getContractInput() {
@@ -34,12 +35,16 @@ function addContract(addedContract) {
 }
 
 export function confirmContractOverview() {
-    getContractInput();
-    const addedContract = contractOverviewStorage().load();
-    addContract(addedContract);
+    if (checkInput('input__contract-overview')) {
+        getContractInput();
+        const addedContract = contractOverviewStorage().load();
+        addContract(addedContract);
 
-    const parent = document.querySelector('#input__contract-overview .contract-overview-added');
-    parent.style.display = 'flex';
+        const parent = document.querySelector('#input__contract-overview .contract-overview-added');
+        parent.style.display = 'flex';
+
+        return true;
+    } else return false;
 }
 
 (function () {

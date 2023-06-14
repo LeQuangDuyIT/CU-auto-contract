@@ -1,3 +1,4 @@
+import { checkInput } from '../index/index.js';
 import { clientStorage } from './local-storage.js';
 function getIndexOf3thComma(string) {
     let count = 0;
@@ -20,23 +21,30 @@ function splitAddress(string) {
 // Hàm xóa dấu tiếng Việt
 function removeVietnameseAccent(str) {
     const accents = [
-      /[\300-\306]/g, /[\340-\346]/g, // A, a
-      /[\310-\313]/g, /[\350-\353]/g, // E, e
-      /[\314-\317]/g, /[\354-\357]/g, // I, i
-      /[\322-\330]/g, /[\362-\370]/g, // O, o
-      /[\331-\334]/g, /[\371-\374]/g, // U, u
-      /[\321]/g, /[\361]/g, // N, n
-      /[\307]/g, /[\347]/g, // C, c
+        /[\300-\306]/g,
+        /[\340-\346]/g, // A, a
+        /[\310-\313]/g,
+        /[\350-\353]/g, // E, e
+        /[\314-\317]/g,
+        /[\354-\357]/g, // I, i
+        /[\322-\330]/g,
+        /[\362-\370]/g, // O, o
+        /[\331-\334]/g,
+        /[\371-\374]/g, // U, u
+        /[\321]/g,
+        /[\361]/g, // N, n
+        /[\307]/g,
+        /[\347]/g // C, c
     ];
 
     const noAccents = ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u', 'N', 'n', 'C', 'c'];
 
     for (let i = 0; i < accents.length; i++) {
-      str = str.replace(accents[i], noAccents[i]);
+        str = str.replace(accents[i], noAccents[i]);
     }
 
     return str;
-  }
+}
 
 // const convertPosition = [
 //     {
@@ -105,12 +113,16 @@ function addClient(addedClinet) {
 }
 
 export function confirmClient() {
-    getClientInput();
-    const addedClinet = clientStorage().load();
-    addClient(addedClinet);
+    if (checkInput('input__client')) {
+        getClientInput();
+        const addedClinet = clientStorage().load();
+        addClient(addedClinet);
 
-    const parent = document.querySelector('#input__client .client-added');
-    parent.style.display = 'flex';
+        const parent = document.querySelector('#input__client .client-added');
+        parent.style.display = 'flex';
+
+        return true;
+    } else return false;
 }
 
 (function () {
@@ -128,4 +140,4 @@ export function confirmClient() {
         const parent = document.querySelector('#input__client .client-added');
         parent.style.display = 'none';
     }
-})()
+})();

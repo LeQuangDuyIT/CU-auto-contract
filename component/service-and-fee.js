@@ -1,3 +1,4 @@
+import { checkInput } from '../index/index.js';
 import { sourceDocStorage, contractOverviewStorage, serviceStorage, totalServiceFeeStorage } from './local-storage.js';
 import { numberToWordsEn } from './number-to-words-en.js';
 import { numAndWordData, toWordVi } from './number-to-words-vi.js';
@@ -172,25 +173,36 @@ export function renderTotalFee() {
 }
 renderTotalFee();
 
-function editAndSaveTotalServiceFee() {
-    let totalServiceFee = totalServiceFeeStorage().load();
+export function editAndSaveTotalServiceFee() {
+    if (checkInput('input__total-fee')) {
+        let totalServiceFee = totalServiceFeeStorage().load();
 
-    const totalFeeWordVn = document.getElementById('input-total-fee--words-vi').value;
-    const totalFeeWordEn = document.getElementById('input-total-fee--words-en').value;
+        const totalFeeWordVn = document.getElementById('input-total-fee--words-vi').value;
+        const totalFeeWordEn = document.getElementById('input-total-fee--words-en').value;
 
-    totalServiceFee = { ...totalServiceFee, amountWordVi: totalFeeWordVn, amountWordEn: totalFeeWordEn };
+        totalServiceFee = { ...totalServiceFee, amountWordVi: totalFeeWordVn, amountWordEn: totalFeeWordEn };
 
-    totalServiceFeeStorage().save(totalServiceFee);
+        totalServiceFeeStorage().save(totalServiceFee);
 
-    const parent = document.querySelector('#input__total-fee .total-fee-confirmed');
-    parent.style.display = 'block';
+        const parent = document.querySelector('#input__total-fee .total-fee-confirmed');
+        parent.style.display = 'block';
 
-    confirmTotalFee(totalServiceFeeStorage().load());
+        confirmTotalFee(totalServiceFeeStorage().load());
+
+        return true;
+    } else return false;
 }
 
 export function confirmService() {
-    const newService = serviceInput().getValue();
-    if (!Object.values(newService).includes('')) {
+    function checkFee() {
+        const feeInput = document.getElementById('input-service__fee');
+        if (+feeInput.value.replace(/[,.]/g, '') % 10 !== 0) {
+            feeInput.classList.add('required');
+            return false;
+        } else return true;
+    }
+    if (checkInput('input__service') && checkFee()) {
+        const newService = serviceInput().getValue();
         let serviceList = serviceStorage().load();
         serviceList.push(newService);
         serviceStorage().save(serviceList);
@@ -203,7 +215,8 @@ export function confirmService() {
 
         const parent = document.querySelector('#input__service .services-added');
         parent.style.display = 'block';
-    }
+        return true;
+    } else return false;
 }
 
 (function () {
@@ -238,10 +251,8 @@ export function confirmService() {
     }
 })();
 
-
 function confirmTotalFee(confirmedTotalFee) {
-    const elements =
-        `<div class="form">
+    const elements = `<div class="form">
             <table>
                 <tbody>
                     <tr>
@@ -270,3 +281,14 @@ function confirmTotalFee(confirmedTotalFee) {
     const parent = document.querySelector('#input__total-fee .total-fee-confirmed');
     parent.innerHTML = elements;
 }
+
+(function () {
+    const reloadBtn = document.getElementById('reload-total-fee');
+    reloadBtn.addEventListener('click', () => {
+        const totalFee = totalServiceFeeStorage().load();
+        if (Object.values(totalFee).length > 0) {
+            getTotalFee();
+            renderTotalFee();
+        }
+    });
+})();

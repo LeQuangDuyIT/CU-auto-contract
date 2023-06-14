@@ -9,7 +9,13 @@ import {
 import { renderDocument, renderClient } from '../main.js';
 import { confirmProductionUnit, renderProductionUnits } from '../component/production-units.js';
 import { confirmProcessingUnit, renderProcessingUnits } from '../component/processing-units.js';
-import { confirmService, getTotalFee, renderServices, renderTotalFee } from '../component/service-and-fee.js';
+import {
+    confirmService,
+    editAndSaveTotalServiceFee,
+    getTotalFee,
+    renderServices,
+    renderTotalFee
+} from '../component/service-and-fee.js';
 import { confirmContractOverview } from '../component/contract-overview.js';
 import { confirmClient } from '../component/client.js';
 
@@ -30,22 +36,42 @@ import { confirmClient } from '../component/client.js';
 (function () {
     const makeDocBtn = document.getElementById('make-doc');
     makeDocBtn.addEventListener('click', () => {
+        // function checkInputSections() {
+        //     const inputSections = Array.from(document.getElementsByClassName('input__section'));
+        //     let isValid = true;
+        //     inputSections.forEach(section => {
+        //         if (!checkInput(section.id)) {
+        //             isValid = false;
+        //         }
+        //     });
+        //     return isValid;
+        // }
         confirmContractOverview();
         confirmClient();
         confirmProductionUnit();
         confirmProcessingUnit();
         confirmService();
+        editAndSaveTotalServiceFee();
 
-        renderProductionUnits();
+        if (
+            confirmContractOverview() &&
+            confirmClient() &&
+            confirmProductionUnit() &&
+            confirmProcessingUnit() &&
+            confirmService() &&
+            editAndSaveTotalServiceFee()
+        ) {
+            renderProductionUnits();
 
-        const processingUnits = processingUnitStorage().load();
-        if (processingUnits.length > 0) {
-            renderProcessingUnits();
+            const processingUnits = processingUnitStorage().load();
+            if (processingUnits.length > 0) {
+                renderProcessingUnits();
+            }
+
+            renderServices();
+
+            location.reload();
         }
-
-        renderServices();
-
-        location.reload();
     });
 })();
 
@@ -58,5 +84,24 @@ import { confirmClient } from '../component/client.js';
 
         getTotalFee();
         renderTotalFee();
-    })
-})()
+    });
+})();
+
+export function checkInput(parentId) {
+    const parent = document.getElementById(`${parentId}`);
+    const requiredElements = [
+        ...parent.querySelectorAll('input[required]'),
+        ...parent.querySelectorAll('textarea[required]')
+    ];
+    let isValid = true;
+    requiredElements.forEach(element => {
+        element.addEventListener('input', () => {
+            element.classList.remove('required');
+        });
+        if (!element.value) {
+            element.classList.add('required');
+            isValid = false;
+        }
+    });
+    return isValid;
+}
