@@ -33,15 +33,19 @@ function addContract(addedContract) {
     parent.innerHTML = elements;
 }
 
-(function () {
-    const btn = document.getElementById('add-contract-overview');
-    btn.addEventListener('click', () => {
-        getContractInput();
+export function confirmContractOverview() {
+    getContractInput();
         const addedContract = contractOverviewStorage().load();
         addContract(addedContract);
 
         const parent = document.querySelector('#input__contract-overview .contract-overview-added');
         parent.style.display = 'flex';
+}
+
+(function () {
+    const btn = document.getElementById('add-contract-overview');
+    btn.addEventListener('click', () => {
+        confirmContractOverview();
     });
 })();
 

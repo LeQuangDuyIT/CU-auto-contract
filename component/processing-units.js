@@ -96,26 +96,27 @@ export function renderProcessingUnits() {
     }
 }
 
+export function confirmProcessingUnit() {
+    const newUnit = unitInput().getValue();
+    if (!Object.values(newUnit).includes('')) {
+        let processingUnitList = processingUnitStorage().load();
+        processingUnitList.push(newUnit);
+        processingUnitStorage().save(processingUnitList);
+
+
+        addProcessingUnit();
+        unitInput().refreshValue();
+
+        const parent = document.querySelector('#input__processing-units .units-added');
+        parent.style.display = 'block';
+
+    }
+}
+
 (function () {
     const addBtn = document.getElementById('add-processing-unit');
     addBtn.addEventListener('click', () => {
-        const newUnit = unitInput().getValue();
-        if (!Object.values(newUnit).includes('')) {
-            let processingUnitList = processingUnitStorage().load();
-            processingUnitList.push(newUnit);
-            processingUnitStorage().save(processingUnitList);
-
-            // renderProcessingUnits();
-
-            addProcessingUnit();
-            unitInput().refreshValue();
-
-            const parent = document.querySelector('#input__processing-units .units-added');
-            parent.style.display = 'block';
-
-            // renderDocument();
-            // location.reload();
-        }
+        confirmProcessingUnit();
     });
 })();
 

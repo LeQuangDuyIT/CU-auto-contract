@@ -94,32 +94,26 @@ export function renderProductionUnits() {
     }
 }
 
+export function confirmProductionUnit() {
+    const newUnit = unitInput().getValue();
+    if (!Object.values(newUnit).includes('')) {
+        let productionUnitList = productionUnitStorage().load();
+        productionUnitList.push(newUnit);
+        productionUnitStorage().save(productionUnitList);
+
+        addProductionUnit();
+        addProcessingUnit();
+        unitInput().refreshValue();
+
+        const parent = document.querySelector('#input__production-units .units-added');
+        parent.style.display = 'block';
+    }
+}
+
 (function () {
     const addBtn = document.getElementById('add-production-unit');
     addBtn.addEventListener('click', () => {
-        const newUnit = unitInput().getValue();
-        if (!Object.values(newUnit).includes('')) {
-            let productionUnitList = productionUnitStorage().load();
-            productionUnitList.push(newUnit);
-            productionUnitStorage().save(productionUnitList);
-
-            // renderProductionUnits();
-
-            // const processingUnits = processingUnitStorage().load();
-            // if (processingUnits.length > 0) {
-            //     renderProcessingUnits();
-            // }
-
-            addProductionUnit();
-            addProcessingUnit();
-            unitInput().refreshValue();
-
-            const parent = document.querySelector('#input__production-units .units-added');
-            parent.style.display = 'block';
-
-            // renderDocument();
-            // location.reload();
-        }
+        confirmProductionUnit();
     });
 })();
 
@@ -131,4 +125,4 @@ export function renderProductionUnits() {
         const parent = document.querySelector('#input__production-units .units-added');
         parent.style.display = 'none';
     }
-})()
+})();

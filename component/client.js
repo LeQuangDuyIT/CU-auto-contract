@@ -83,16 +83,19 @@ function addClient(addedClinet) {
     parent.innerHTML = elements;
 }
 
+export function confirmClient() {
+    getClientInput();
+    const addedClinet = clientStorage().load();
+    addClient(addedClinet);
+
+    const parent = document.querySelector('#input__client .client-added');
+    parent.style.display = 'flex';
+}
 
 (function () {
     const btn = document.getElementById('add-client');
     btn.addEventListener('click', () => {
-        getClientInput();
-        const addedClinet = clientStorage().load();
-        addClient(addedClinet);
-
-        const parent = document.querySelector('#input__client .client-added');
-        parent.style.display = 'flex';
+        confirmClient();
     });
 })();
 

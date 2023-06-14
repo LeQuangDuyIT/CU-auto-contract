@@ -187,24 +187,28 @@ function editAndSaveTotalServiceFee() {
     confirmTotalFee(totalServiceFeeStorage().load());
 }
 
+export function confirmService() {
+    const newService = serviceInput().getValue();
+    if (!Object.values(newService).includes('')) {
+        let serviceList = serviceStorage().load();
+        serviceList.push(newService);
+        serviceStorage().save(serviceList);
+
+        addService();
+        serviceInput().refreshValue();
+
+        getTotalFee();
+        renderTotalFee();
+
+        const parent = document.querySelector('#input__service .services-added');
+        parent.style.display = 'block';
+    }
+}
+
 (function () {
     const addBtn = document.getElementById('add-service');
     addBtn.addEventListener('click', () => {
-        const newService = serviceInput().getValue();
-        if (!Object.values(newService).includes('')) {
-            let serviceList = serviceStorage().load();
-            serviceList.push(newService);
-            serviceStorage().save(serviceList);
-
-            addService();
-            serviceInput().refreshValue();
-
-            getTotalFee();
-            renderTotalFee();
-
-            const parent = document.querySelector('#input__service .services-added');
-            parent.style.display = 'block';
-        }
+        confirmService();
     });
 })();
 
@@ -242,12 +246,12 @@ function confirmTotalFee(confirmedTotalFee) {
                     <tr>
                         <td>Tổng phí</td>
                         <td>:</td>
-                        <td>${confirmedTotalFee.totalFee}</td>
+                        <td>${confirmedTotalFee.totalFee.toLocaleString('en-US')}</td>
                     </tr>
                     <tr>
                         <td>Tổng phí (VAT)</td>
                         <td>:</td>
-                        <td>${confirmedTotalFee.amount}</td>
+                        <td>${confirmedTotalFee.amount.toLocaleString('en-US')}</td>
                     </tr>
                     <tr>
                         <td>Bằng chữ</td>
