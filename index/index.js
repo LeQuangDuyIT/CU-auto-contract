@@ -36,31 +36,36 @@ import { confirmClient } from '../component/client.js';
 (function () {
     const makeDocBtn = document.getElementById('make-doc');
     makeDocBtn.addEventListener('click', () => {
-        // function checkInputSections() {
-        //     const inputSections = Array.from(document.getElementsByClassName('input__section'));
-        //     let isValid = true;
-        //     inputSections.forEach(section => {
-        //         if (!checkInput(section.id)) {
-        //             isValid = false;
-        //         }
-        //     });
-        //     return isValid;
-        // }
-        confirmContractOverview();
-        confirmClient();
-        confirmProductionUnit();
-        confirmProcessingUnit();
-        confirmService();
-        editAndSaveTotalServiceFee();
+        function checkDatas(storageFunction, confirmFunction) {
+            const datas = storageFunction.load();
+            if (Object.keys(datas).length === 0 || datas.length === 0) {
+                confirmFunction;
+                return false;
+            }
+            return true;
+        }
 
-        if (
-            confirmContractOverview() &&
-            confirmClient() &&
-            confirmProductionUnit() &&
-            confirmProcessingUnit() &&
-            confirmService() &&
-            editAndSaveTotalServiceFee()
-        ) {
+        const callFunctionList = [
+            () => checkDatas(contractOverviewStorage(), confirmContractOverview()),
+            () => checkDatas(clientStorage(), confirmClient()),
+            () => checkDatas(productionUnitStorage(), confirmProductionUnit()),
+            () => checkDatas(processingUnitStorage(), confirmProcessingUnit()),
+            () => checkDatas(serviceStorage(), confirmService()),
+            () => checkDatas(totalServiceFeeStorage(), editAndSaveTotalServiceFee())
+        ];
+
+        function checkCallFunctionList() {
+            callFunctionList.forEach(func => {
+                console.log(func());
+                if (!func()) {
+                    return false;
+                }
+            });
+            return true;
+        }
+        console.log(checkCallFunctionList());
+
+        if (checkCallFunctionList()) {
             renderProductionUnits();
 
             const processingUnits = processingUnitStorage().load();
