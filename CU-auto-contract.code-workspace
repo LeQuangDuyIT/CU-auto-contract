@@ -1,15 +1,5 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../../../Mind X - Lập trình X-career Plus/Level_02-Code_Intensive"
-		},
-		{
-			"path": "../../../Mind X - Lập trình X-career Plus/Level_01-Code_For_Everyone/DUY - BAI CUOI KHOA/c4e138duy"
-		}
-	],
+	"folders": [],
 	"settings": {
 		"liveServer.settings.multiRootWorkspaceName": "Level_02-Code_Intensive"
 	}
